@@ -3,24 +3,24 @@ The python code to be run in the raspberry.
 
 ### Installation:
 
-[] Install virtualenv
+* Install virtualenv
 ```
 pip install virtualenv
 virtualenv --version
 ```
-[] Install virtualenvwrapper -> https://virtualenvwrapper.readthedocs.io/en/latest/install.html
+* Install virtualenvwrapper -> https://virtualenvwrapper.readthedocs.io/en/latest/install.html
 
-[] Create the virtual environment
+* Create the virtual environment
 ```
 mkvirtualenv raspberry
 workon raspberry
 cdvirtualenv
 ```
-[] Download git repository
+* Download git repository
 ```
 git clone git@github.com:Blindle/Raspberry.git
 ```
-[] Install dependencies
+* Install dependencies
 ```
 cd Raspberry
 pip install -r requirements.txt
