@@ -1,0 +1,30 @@
+{
+    "learn-levels": [
+        {
+            "id": 1,
+            "words": ["a","b","c","d","e","f","g"]
+        },
+        {
+            "id": 2,
+            "words": ["la","en","mi","ya","el","si","no"]
+        },
+        {
+            "id": 3,
+            "words": ["las","mar","mio","pie","tia","rio"]
+        }
+    ],
+    "evaluation-levels": [
+        {
+            "id": 1,
+            "words": ["o","p","d","m","j","a","i"]
+        },
+        {
+            "id": 2,
+            "words": ["la","en","mi","ya","el","si","no"]
+        },
+        {
+            "id": 3,
+            "words": ["las","mar","mio","pie","tia","rio"]
+        }
+    ]
+}

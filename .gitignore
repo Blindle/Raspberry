@@ -99,3 +99,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+#audio example
+audio.mp3
