@@ -14,13 +14,11 @@ level.print_words_in_level()
 arduino = serial.Serial('/dev/ttyACM0', 9600)
 
 print("Starting!")
+comando = "start"
 
-while True:
-      comando = raw_input('Introduce un comando: ') #Input
+while != "bye":
+      comando = raw_input('Introduce un letra: ') #Input
       arduino.write(comando) #Mandar un comando hacia Arduino
-      if comando == 'H':
-            print('LED ENCENDIDO')
-      elif comando == 'L':
-            print('LED APAGADO')
+      print("letra enviada: " + comando)
 
 arduino.close() #Finalizamos la comunicacion
