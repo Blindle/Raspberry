@@ -14,11 +14,12 @@ level.print_words_in_level()
 arduino = serial.Serial('/dev/ttyACM0', 9600)
 
 print("Starting!")
-comando = "start"
+letter = "start"
 
-while != "bye":
-      comando = raw_input('Introduce un letra: ') #Input
-      arduino.write(comando) #Mandar un comando hacia Arduino
-      print("letra enviada: " + comando)
+while letter != "bye":
+      letter = raw_input('Introduce un letra: ') #Input
+      arduino.write(letter) #Mandar un comando hacia Arduino
+      musicPlayer.playLetter(letter)
+      print("letra enviada: " + letter)
 
 arduino.close() #Finalizamos la comunicacion
