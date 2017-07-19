@@ -7,6 +7,7 @@ from output.console import ConsoleOutput
 from output.arduino import ArduinoOutput
 import config.configHelper as configHelper
 
+
 config = configHelper.getConfig()
 
 if config['input'] == 'console':
@@ -19,6 +20,7 @@ if config['output'] == 'console':
 else:
     my_output = ArduinoOutput(9600)
 
+my_output.write('HOLA')
 
 print("Starting!")
 letter = "start"
@@ -26,4 +28,5 @@ letter = "start"
 while letter != "bye":
     letter = my_input.get_input()
     # musicPlayer.playLetter(letter)
-    my_output.write(letter)
+    print(letter)
+    #my_output.write(letter)
