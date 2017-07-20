@@ -11,6 +11,8 @@ from output.arduino import ArduinoOutput
 from state import state
 
 from state.objects.MainMenu import MainMenu
+from state.objects.LearnMenu import LearnMenu
+from state.objects.EvaluateMenu import EvaluateMenu
 
 CONFIG = configHelper.get_config()
 
@@ -29,12 +31,23 @@ def get_output_processer():
     return my_output
 
 def get_state_object():
-    return {
-        'menu': MainMenu(),
-        'learn-menu': 'learn menu',
-        'evaluate-menu': 'evaluate menu',
-        'learn': 'learn',
-        'write': 'write',
-        'evaluate': 'evaluate',
-        'config': 'config'
-    }.get(state.get_state(), '')
+    current_state = state.get_state()
+    if current_state == 'menu':
+        state_object = MainMenu()
+    elif current_state == 'learn-menu':
+        state_object = LearnMenu()
+    elif current_state == 'evaluate-menu':
+        state_object = EvaluateMenu()
+    elif current_state == 'learn':
+        state_object = 'Learn()'
+    elif current_state == 'write':
+        state_object = 'Write()'
+    elif current_state == 'evaluate':
+        state_object = 'Evaluate()'
+    elif current_state == 'config':
+        state_object = 'Config()'
+    else:
+        raise Exception('The state isnt valid')
+
+    return state_object
+
