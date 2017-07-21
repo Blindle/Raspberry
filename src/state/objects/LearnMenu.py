@@ -29,7 +29,7 @@ class LearnMenu:
         if input_value == "enter":
             print("Entrando a " +
                   self.MENU_OPTIONS[self.CURRENT_OPTION].realName + " ...")
-            state.set_state(StateEnum.LEARN.key, self.MENU_OPTIONS[self.CURRENT_OPTION].realName)
+            state.set_state(StateEnum.LEARN, self.MENU_OPTIONS[self.CURRENT_OPTION].key)
 
         if input_value == "back":
             print("Regresando a " + StateEnum.MENU.realName)

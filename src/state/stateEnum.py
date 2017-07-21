@@ -8,9 +8,9 @@ class StateEnum(Enum):
 	WRITE         = ('write', 'Escritura')
 	EVALUATE      = ('evaluate', 'Evaluacion')
 	CONFIG        = ('config', 'Configuracion')
-	LEVEL_1       = ('level1', 'Nivel 1')
-	LEVEL_2       = ('level2', 'Nivel 2')
-	LEVEL_3       = ('level3', 'Nivel 3')
+	LEVEL_1       = (1, 'Nivel 1')
+	LEVEL_2       = (2, 'Nivel 2')
+	LEVEL_3       = (3, 'Nivel 3')
 	
 	def __init__(self, key, realName):	
 		self.key = key 

@@ -15,6 +15,7 @@ from state.objects.MainMenu import MainMenu
 from state.objects.LearnMenu import LearnMenu
 from state.objects.EvaluateMenu import EvaluateMenu
 from state.objects.Write import Write
+from state.objects.Learn import Learn
 
 CONFIG = configHelper.get_config()
 
@@ -41,7 +42,7 @@ def get_state_object():
     elif current_state == StateEnum.EVALUATE_MENU:
         state_object = EvaluateMenu()
     elif current_state == StateEnum.LEARN:
-        state_object = 'Learn()'
+        state_object = Learn(state.get_level())
     elif current_state == StateEnum.WRITE:
         state_object = Write()
     elif current_state == StateEnum.EVALUATE:
