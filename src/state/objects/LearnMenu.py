@@ -3,16 +3,15 @@ import os
 sys.path.append(os.path.dirname(__file__) + "../")
 
 from state import state
-
+from state.stateEnum import StateEnum
 
 class LearnMenu:
 
-    MENU_OPTIONS = ["Nivel 1", "Nivel 2", "Nivel 3"]
-    MENU_VALUES = [1, 2, 3]
+    MENU_OPTIONS = [StateEnum.LEVEL_1, StateEnum.LEVEL_2, StateEnum.LEVEL_3]
     CURRENT_OPTION = 0
 
     def __init__(self):
-        print(self.MENU_OPTIONS[self.CURRENT_OPTION])
+        print(self.MENU_OPTIONS[self.CURRENT_OPTION].realName)
         pass
 
     def process_input(self, input_value):
@@ -20,21 +19,21 @@ class LearnMenu:
         if input_value == "right":
             self.CURRENT_OPTION += 1
             self._verify_overflow()
-            print(self.MENU_OPTIONS[self.CURRENT_OPTION])
+            print(self.MENU_OPTIONS[self.CURRENT_OPTION].realName)
 
         if input_value == "left":
             self.CURRENT_OPTION -= 1
             self._verify_overflow()
-            print(self.MENU_OPTIONS[self.CURRENT_OPTION])
+            print(self.MENU_OPTIONS[self.CURRENT_OPTION].realName)
 
         if input_value == "enter":
             print("Entrando a " +
-                  self.MENU_OPTIONS[self.CURRENT_OPTION] + " ...")
-            state.set_state('learn', self.MENU_VALUES[self.CURRENT_OPTION])
+                  self.MENU_OPTIONS[self.CURRENT_OPTION].realName + " ...")
+            state.set_state(StateEnum.LEARN.key, self.MENU_OPTIONS[self.CURRENT_OPTION].realName)
 
         if input_value == "back":
-            print("Regresando a menu principal")
-            state.set_state("menu")
+            print("Regresando a " + StateEnum.MENU.realName)
+            state.set_state(StateEnum.MENU)
 
     def _verify_overflow(self):
         if self.CURRENT_OPTION == len(self.MENU_OPTIONS):

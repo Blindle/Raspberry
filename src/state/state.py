@@ -1,10 +1,12 @@
-states = [ 'menu', 'learn-menu', 'evaluate-menu', 'learn', 'write', 'evaluate', 'config' ]
+from stateEnum import StateEnum
 
-state_variables = {'state': 'menu', 'level': 1}
+states = [ StateEnum.MENU, StateEnum.LEARN_MENU, StateEnum.EVALUATE_MENU, StateEnum.LEARN, StateEnum.WRITE, StateEnum.EVALUATE, StateEnum.CONFIG ]
+
+state_variables = {'state': StateEnum.MENU, 'level': StateEnum.LEVEL_1}
 
 def set_state(new_state, new_level = None):
     if new_state in states:
-        if new_state == 'learn' or new_state == 'evaluate':
+        if new_state == StateEnum.LEARN or new_state == StateEnum.EVALUATE:
             _set_level(new_level)
 
         state_variables['state'] = new_state
