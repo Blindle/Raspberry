@@ -29,7 +29,7 @@ class MainMenu:
         if input_value == "enter":
             print("Entrando a " +
                   self.MENU_OPTIONS[self.CURRENT_OPTION].realName + " ...")
-            state.set_state(self.MENU_OPTIONS[self.CURRENT_OPTION])
+            state.set_state(self.MENU_OPTIONS[self.CURRENT_OPTION].key)
 
     def _verify_overflow(self):
         if self.CURRENT_OPTION == len(self.MENU_OPTIONS):

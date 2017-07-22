@@ -1,20 +1,20 @@
 from stateEnum import StateEnum
 
-states = [StateEnum.MENU,
-          StateEnum.LEARN_MENU,
-          StateEnum.EVALUATE_MENU,
-          StateEnum.LEARN,
-          StateEnum.WRITE,
-          StateEnum.EVALUATE,
-          StateEnum.CONFIG
+states = [StateEnum.MENU.key,
+          StateEnum.LEARN_MENU.key,
+          StateEnum.EVALUATE_MENU.key,
+          StateEnum.LEARN.key,
+          StateEnum.WRITE.key,
+          StateEnum.EVALUATE.key,
+          StateEnum.CONFIG.key
          ]
 
-state_variables = {'state': StateEnum.MENU, 'level': StateEnum.LEVEL_1.key}
+state_variables = {'state': StateEnum.MENU.key, 'level': StateEnum.LEVEL_1.key}
 
 
 def set_state(new_state, new_level=None):
     if new_state in states:
-        if new_state == StateEnum.LEARN or new_state == StateEnum.EVALUATE:
+        if new_state == StateEnum.LEARN.key or new_state == StateEnum.EVALUATE.key:
             _set_level(new_level)
 
         state_variables['state'] = new_state

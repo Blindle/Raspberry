@@ -35,19 +35,19 @@ def get_output_processer():
 
 def get_state_object():
     current_state = state.get_state()
-    if current_state == StateEnum.MENU:
+    if current_state == StateEnum.MENU.key:
         state_object = MainMenu()
-    elif current_state == StateEnum.LEARN_MENU:
+    elif current_state == StateEnum.LEARN_MENU.key:
         state_object = LearnMenu()
-    elif current_state == StateEnum.EVALUATE_MENU:
+    elif current_state == StateEnum.EVALUATE_MENU.key:
         state_object = EvaluateMenu()
-    elif current_state == StateEnum.LEARN:
+    elif current_state == StateEnum.LEARN.key:
         state_object = Learn(state.get_level())
-    elif current_state == StateEnum.WRITE:
+    elif current_state == StateEnum.WRITE.key:
         state_object = Write()
-    elif current_state == StateEnum.EVALUATE:
+    elif current_state == StateEnum.EVALUATE.key:
         state_object = 'Evaluate()'
-    elif current_state == StateEnum.CONFIG:
+    elif current_state == StateEnum.CONFIG.key:
         state_object = 'Config()'
     else:
         raise Exception('The state isnt valid')

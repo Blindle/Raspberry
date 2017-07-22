@@ -14,7 +14,7 @@ class Write:
 
         if input_value == "back":
             print("Regresando a " + StateEnum.MENU.realName)
-            state.set_state(StateEnum.MENU)
+            state.set_state(StateEnum.MENU.key)
 
     def _verify_overflow(self):
         pass
