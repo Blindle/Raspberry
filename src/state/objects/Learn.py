@@ -22,20 +22,25 @@ class Learn:
 
         if input_value == "right":
             self.current_word += 1
-            self._verify_overflow()
-            self._print_word()
+            if not self._verify_overflow():
+                self._print_word()
+            else:
+                print("Se termino el nivel " + str(self.number) + " de aprendizaje. Saliendo al menu principal ...")
+                state.set_state(StateEnum.MENU.key)
 
         if input_value == "left":
             self.current_word -= 1
-            self._verify_overflow()
-            self._print_word()
+            if not self._verify_overflow():
+                self._print_word()
+            else:
+                self.current_word = 0
 
         if input_value == "back":
             print("Regresando a " + StateEnum.MENU.realName)
             state.set_state(StateEnum.MENU.key)
 
     def _verify_overflow(self):
-        pass
+        return self.current_word == -1 or self.current_word == len(self.words)
     
     def _print_word(self):
         word = self.words[self.current_word]
