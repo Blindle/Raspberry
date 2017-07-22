@@ -6,6 +6,7 @@ from state import state
 from state.stateEnum import StateEnum
 from helpers import configHelper
 from helpers import processorHelper
+from helpers import musicHelper
 
 class Learn:
 
@@ -24,6 +25,7 @@ class Learn:
             self.current_word += 1
             self._verify_overflow()
             self._print_word()
+            musicHelper.play_word(self.words[self.current_word])
 
         if input_value == "left":
             self.current_word -= 1
@@ -31,8 +33,8 @@ class Learn:
             self._print_word()
 
         if input_value == "back":
-            print("Regresando a " + StateEnum.MENU.realName)
-            state.set_state(StateEnum.MENU.key)
+            print("Regresando a " + StateEnum.LEARN_MENU.realName)
+            state.set_state(StateEnum.LEARN_MENU.key)
 
     def _verify_overflow(self):
         pass

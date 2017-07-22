@@ -20,19 +20,19 @@ class EvaluateMenu:
             self._verify_overflow()
             print(self.MENU_OPTIONS[self.CURRENT_OPTION].realName)
 
-        if input_value == "left":
+        elif input_value == "left":
             self.CURRENT_OPTION -= 1
             self._verify_overflow()
             print(self.MENU_OPTIONS[self.CURRENT_OPTION].realName)
 
-        if input_value == "enter":
+        elif input_value == "enter":
             print("Entrando a " +
                   self.MENU_OPTIONS[self.CURRENT_OPTION].realName + " ...")
             state.set_state(StateEnum.EVALUATE.key, self.MENU_OPTIONS[self.CURRENT_OPTION].key)
 
-        if input_value == "back":
-            print("Regresando a " + StateEnum.MENU.realName)
-            state.set_state(StateEnum.MENU.key)
+        elif input_value == "back":
+            print("Regresando a " + StateEnum.EVALUATE_MENU.realName)
+            state.set_state(StateEnum.EVALUATE_MENU.key)
 
     def _verify_overflow(self):
         if self.CURRENT_OPTION == len(self.MENU_OPTIONS):

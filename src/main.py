@@ -1,10 +1,7 @@
-from Level import Level
-import musicPlayer
 import helpers.loadingHelper as loadingHelper
 import helpers.processorHelper as processorHelper
 
 from state import state
-
 
 my_input = processorHelper.get_input_processor()
 my_output = processorHelper.get_output_processor()

@@ -21,12 +21,12 @@ class MainMenu:
             self._verify_overflow()
             print(self.MENU_OPTIONS[self.CURRENT_OPTION].realName)
 
-        if input_value == "left":
+        elif input_value == "left":
             self.CURRENT_OPTION -= 1
             self._verify_overflow()
             print(self.MENU_OPTIONS[self.CURRENT_OPTION].realName)
 
-        if input_value == "enter":
+        elif input_value == "enter":
             print("Entrando a " +
                   self.MENU_OPTIONS[self.CURRENT_OPTION].realName + " ...")
             state.set_state(self.MENU_OPTIONS[self.CURRENT_OPTION].key)
