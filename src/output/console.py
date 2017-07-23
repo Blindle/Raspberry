@@ -2,6 +2,12 @@ class ConsoleOutput:
     def __init__(self):
         pass
 
+    def write_words(self, words):
+        output = ""
+        for word in words:
+            output += self._createPrintingString(word) + " "
+        print(output) 
+
     def write(self, word):
         print(self._createPrintingString(word))
 
