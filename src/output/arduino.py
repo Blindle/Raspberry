@@ -5,9 +5,6 @@ class ArduinoOutput:
         self.port = port
         self.output = serial.Serial('/dev/ttyACM0', port)
 
-    def write_words(self, words):
-        pass
-
     def write(self, word):
     	self.output.write(word)
 

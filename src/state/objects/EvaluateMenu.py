@@ -31,8 +31,8 @@ class EvaluateMenu:
             state.set_state(StateEnum.EVALUATE.key, self.MENU_OPTIONS[self.CURRENT_OPTION].key)
 
         elif input_value == "back":
-            print("Regresando a " + StateEnum.EVALUATE_MENU.realName)
-            state.set_state(StateEnum.EVALUATE_MENU.key)
+            print("Regresando a " + StateEnum.MENU.realName)
+            state.set_state(StateEnum.MENU.key)
 
     def _verify_overflow(self):
         if self.CURRENT_OPTION == len(self.MENU_OPTIONS):

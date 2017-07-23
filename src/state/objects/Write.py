@@ -1,5 +1,6 @@
 import sys
 import os
+import numpy as np
 sys.path.append(os.path.dirname(__file__) + "../")
 
 from state import state
@@ -9,8 +10,8 @@ from helpers import configHelper
 
 class Write:
 
-    POINT, LETTER = 6, 4
-    current_letter = 0
+    POINT = 6
+    letter, current_letter = 4, 0
 
     def __init__(self):
         print("Comienza la escritura libre, toque boton Atras para salir ...")
@@ -21,33 +22,47 @@ class Write:
         if input_value in range(1, self.POINT + 1):
             point = input_value - 1
             
-            if self.word[self.current_letter][point] == 0:
-                self.word[self.current_letter][point] = 1
+            if self.braille_matrix[self.current_letter][point] == 0:
+                self.braille_matrix[self.current_letter][point] = 1
             else:
-                self.word[self.current_letter][point] = 0
+                self.braille_matrix[self.current_letter][point] = 0
             self._write()
 
         elif input_value == "right":
             self.current_letter += 1
+            self._verify_overflow()
 
         elif input_value == "left":
             self.current_letter -= 1
+            self._verify_overflow()
 
         elif input_value == "back":
             print("Regresando a " + StateEnum.MENU.realName)
             state.set_state(StateEnum.MENU.key)
 
     def _verify_overflow(self):
-        pass
+        if self.current_letter < 0:
+            self.current_letter = 0
+
+        elif self.current_letter == self.letter:
+            self._resize_matrix()
 
     def _initialize_matrix(self):
-       self.word = [[0 for x in range(self.POINT)] for y in range(self.LETTER)]
+       self.braille_matrix = np.zeros((self.letter, self.POINT), dtype=np.int)
 
     def _write(self):
-        words = ["" for x in range(self.LETTER)]
-        for i in range(self.LETTER):
-            letter = ""
+        symbols = self._transform_points_into_symbols()
+        self.output.write(symbols)
+
+    def _transform_points_into_symbols(self):
+        symbols = ""
+        for i in range(self.letter):
+            braille_points = ""
             for j in range(self.POINT):
-                letter += str(self.word[i][j])
-            words[i] = configHelper.get_symbol(letter)
-        self.output.write_words(words)
+                braille_points += str(self.braille_matrix[i][j])
+            symbols += configHelper.get_symbol(braille_points)
+        return symbols
+
+    def _resize_matrix(self):
+        self.letter += 1
+        self.braille_matrix.resize((self.letter, self.POINT))
