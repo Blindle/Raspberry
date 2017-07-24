@@ -38,7 +38,7 @@ class Learn:
                 self.current_word = 0
 
         if input_value == "back":
-            print("Regresando a " + StateEnum.LEARN_MENU.realName)
+            print("Regresando a " + StateEnum.LEARN_MENU.real_name)
             state.set_state(StateEnum.LEARN_MENU.key)
 
     def _verify_overflow(self):

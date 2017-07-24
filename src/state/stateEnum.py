@@ -12,6 +12,6 @@ class StateEnum(Enum):
 	LEVEL_2       = (2, 'Nivel 2')
 	LEVEL_3       = (3, 'Nivel 3')
 	
-	def __init__(self, key, realName):	
+	def __init__(self, key, real_name):	
 		self.key = key 
-		self.realName = realName 
+		self.real_name = real_name

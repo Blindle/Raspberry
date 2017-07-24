@@ -37,7 +37,7 @@ class Write:
             self._verify_overflow()
 
         elif input_value == "back":
-            print("Regresando a " + StateEnum.MENU.realName)
+            print("Regresando a " + StateEnum.MENU.real_name)
             state.set_state(StateEnum.MENU.key)
 
     def _verify_overflow(self):
