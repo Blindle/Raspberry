@@ -7,9 +7,9 @@ from state.stateEnum import StateEnum
 from helpers import configHelper
 from helpers import processorHelper
 from helpers import musicHelper
+from Navigation import Navigation
 
-class Learn:
-
+class Learn(Navigation):
     current_word = 0
 
     def __init__(self, level_number):
@@ -19,27 +19,25 @@ class Learn:
         print("Nivel " + str(self.number) + " de aprendizaje")
         self._print_word()
 
-    def process_input(self, input_value):
-
-        if input_value == "right":
-            self.current_word += 1
-            if not self._verify_overflow():
-                self._print_word()
-                musicHelper.play_word(self.words[self.current_word])
-            else:
-                print("Se termino el nivel " + str(self.number) + " de aprendizaje. Saliendo al menu principal ...")
-                state.set_state(StateEnum.MENU.key)
-
-        if input_value == "left":
-            self.current_word -= 1
-            if not self._verify_overflow():
-                self._print_word()
-            else:
-                self.current_word = 0
-
-        if input_value == "back":
-            print("Regresando a " + StateEnum.LEARN_MENU.real_name)
+    def _move_right(self):
+        self.current_word += 1
+        if not self._verify_overflow():
+            self._print_word()
+            #musicHelper.play_word(self.words[self.current_word])
+        else:
+            print("Se termino el nivel " + str(self.number) + " de aprendizaje. Saliendo al menu ...")
             state.set_state(StateEnum.LEARN_MENU.key)
+    
+    def _move_left(self):
+        self.current_word -= 1
+        if not self._verify_overflow():
+            self._print_word()
+        else:
+            self.current_word = 0
+
+    def _back_to_previous_state(self):
+        print("Regresando a " + StateEnum.LEARN_MENU.real_name)
+        state.set_state(StateEnum.LEARN_MENU.key)
 
     def _verify_overflow(self):
         return self.current_word == -1 or self.current_word == len(self.words)

@@ -26,7 +26,7 @@ class Menu(Navigation):
     def _select_option(self):
         print("Entrando a " +
             self.state_options[self.current_option].real_name + " ...")
-        state.set_state(self.state_options[self.current_option].key)
+        self._set_new_state()
 
     def _back_to_previous_state(self):
         print("Regresando a " + self.previous_state.real_name)
@@ -48,3 +48,6 @@ class Menu(Navigation):
 
     def _set_previous_state(self, prev_state):
         self.previous_state = prev_state
+
+    def _set_new_state(self):
+        pass
