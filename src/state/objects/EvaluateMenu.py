@@ -14,7 +14,9 @@ class EvaluateMenu(Menu):
 
     def __init__(self):
         super(EvaluateMenu, self).__init__()
+
+    def _set_attributes(self):
+        super(EvaluateMenu, self)._set_attributes()
+        self.state_options = self._STATE_OPTIONS
         self._previous_state = self._PREVIOUS_STATE
         self._next_state = self._NEXT_STATE
-        self.state_options = self._STATE_OPTIONS
-        self._print_current_option()

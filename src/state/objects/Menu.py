@@ -11,6 +11,12 @@ class Menu(Navigation):
 
     def __init__(self):
         super(Menu, self).__init__()
+        self._print_current_option()
+
+    def _set_attributes(self):
+        super(Menu, self)._set_attributes()
+        self.state_options = []
+        self._next_state = ""
 
     def _move_right(self):
         self.current_option += 1

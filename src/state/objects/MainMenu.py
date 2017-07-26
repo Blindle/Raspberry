@@ -11,8 +11,10 @@ class MainMenu(Menu):
 
     def __init__(self):
         super(MainMenu, self).__init__()
-        self.state_options = self._STATE_OPTIONS
-        self._print_current_option()
     
     def _back_to_previous_state(self):
         pass
+
+    def _set_attributes(self):
+        super(MainMenu, self)._set_attributes()
+        self.state_options = self._STATE_OPTIONS

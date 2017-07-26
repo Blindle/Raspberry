@@ -14,20 +14,24 @@ class Learn(Navigation):
     _PREVIOUS_STATE = StateEnum.LEARN_MENU
 
     def __init__(self, level_number):
-        self._previous_state = self._PREVIOUS_STATE
+        super(Learn, self).__init__()
         self.number = level_number
         self.words = configHelper.get_level_config('learn', self.number)['words']
         self.output = processorHelper.get_output_processor()
-        self._print_current_option()
+        self._print_welcome_message()
         self._print_word()
+
+    def _set_attributes(self):
+        super(Learn, self)._set_attributes()
+        self._previous_state = self._PREVIOUS_STATE
 
     def _move_right(self):
         self.current_word += 1
         if not self._verify_overflow():
             self._print_word()
-            #musicHelper.play_word(self.words[self.current_word])
+            musicHelper.play_word(self.words[self.current_word])
         else:
-            self._back_to_previous_state()
+            self._back_to_menu()
     
     def _move_left(self):
         self.current_word -= 1
@@ -36,7 +40,7 @@ class Learn(Navigation):
         else:
             self.current_word = 0
 
-    def _back_to_previous_state(self):
+    def _back_to_menu(self):
         print("Se termino el nivel " + str(self.number) + " de aprendizaje. Volviendo al menu de aprendizaje ...")
         state.set_state(self._previous_state.key)
 
@@ -48,5 +52,8 @@ class Learn(Navigation):
         print(word)
         self.output.write(word.upper())
 
-    def _print_current_option(self):
+    def _print_welcome_message(self):
         print("Nivel " + str(self.number) + " de aprendizaje")
+
+    def _back_to_previous_state(self):
+        pass

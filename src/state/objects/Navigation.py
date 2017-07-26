@@ -2,9 +2,7 @@ from state import state
 
 class Navigation(object): 
     def __init__(self):
-        self.state_options = []
-        self._previous_state = ""
-        self._next_state = ""
+        self._set_attributes()
 
     def process_input(self, input_value):
         if input_value == "right":
@@ -33,4 +31,10 @@ class Navigation(object):
         state.set_state(self._previous_state.key)
     
     def _verify_overflow(self):
+        pass
+
+    def _set_attributes(self):
+        self._previous_state = ""
+
+    def _print_current_option(self):
         pass

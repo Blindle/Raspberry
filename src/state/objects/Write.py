@@ -15,10 +15,14 @@ class Write(Navigation):
     letter, current_letter = 4, 0
 
     def __init__(self):
-        self._previous_state = self._PREVIOUS_STATE
+        super(Write, self).__init__()
         self.output = processorHelper.get_output_processor()
         self._initialize_matrix()
-        self._print_current_option()
+        self._print_welcome_message()
+
+    def _set_attributes(self):
+        super(Write, self)._set_attributes()
+        self._previous_state = self._PREVIOUS_STATE
 
     def process_input(self, input_value):
         if input_value in range(1, self.POINT + 1):
@@ -41,7 +45,7 @@ class Write(Navigation):
         elif self.current_letter == self.letter:
             self._resize_matrix()
     
-    def _print_current_option(self):
+    def _print_welcome_message(self):
         print("Comienza la escritura libre, toque boton Atras para salir ...")
 
     def _initialize_matrix(self):
