@@ -8,7 +8,6 @@ from Navigation import Navigation
 
 class Menu(Navigation):
     current_option = 0
-    previous_state = ""
 
     def __init__(self):
         super(Menu, self).__init__()
@@ -28,10 +27,6 @@ class Menu(Navigation):
             self.state_options[self.current_option].real_name + " ...")
         self._set_new_state()
 
-    def _back_to_previous_state(self):
-        print("Regresando a " + self.previous_state.real_name)
-        state.set_state(self.previous_state.key)
-
     def _verify_overflow(self):
         if self.current_option == len(self.state_options):
             self.current_option = 0
@@ -43,11 +38,8 @@ class Menu(Navigation):
     def _print_current_option(self):
         print(self.state_options[self.current_option].real_name)
 
-    def _set_state_options(self, options):
-        self.state_options = options
-
-    def _set_previous_state(self, prev_state):
-        self.previous_state = prev_state
-
     def _set_new_state(self):
-        pass
+        if self._next_state != "":
+            state.set_state(self._next_state.key, self.state_options[self.current_option].key)
+        else:
+            state.set_state(self.state_options[self.current_option].key)

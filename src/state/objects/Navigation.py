@@ -1,6 +1,10 @@
+from state import state
+
 class Navigation(object): 
     def __init__(self):
         self.state_options = []
+        self._previous_state = ""
+        self._next_state = ""
 
     def process_input(self, input_value):
         if input_value == "right":
@@ -25,10 +29,8 @@ class Navigation(object):
         pass
     
     def _back_to_previous_state(self):
-        pass
-    
-    def _set_state_options(self, options):
-        pass
+        print("Regresando a " + self._previous_state.real_name)
+        state.set_state(self._previous_state.key)
     
     def _verify_overflow(self):
         pass

@@ -11,12 +11,14 @@ from Navigation import Navigation
 
 class Learn(Navigation):
     current_word = 0
+    _PREVIOUS_STATE = StateEnum.LEARN_MENU
 
     def __init__(self, level_number):
+        self._previous_state = self._PREVIOUS_STATE
         self.number = level_number
         self.words = configHelper.get_level_config('learn', self.number)['words']
         self.output = processorHelper.get_output_processor()
-        print("Nivel " + str(self.number) + " de aprendizaje")
+        self._print_current_option()
         self._print_word()
 
     def _move_right(self):
@@ -25,8 +27,7 @@ class Learn(Navigation):
             self._print_word()
             #musicHelper.play_word(self.words[self.current_word])
         else:
-            print("Se termino el nivel " + str(self.number) + " de aprendizaje. Saliendo al menu ...")
-            state.set_state(StateEnum.LEARN_MENU.key)
+            self._back_to_previous_state()
     
     def _move_left(self):
         self.current_word -= 1
@@ -36,8 +37,8 @@ class Learn(Navigation):
             self.current_word = 0
 
     def _back_to_previous_state(self):
-        print("Regresando a " + StateEnum.LEARN_MENU.real_name)
-        state.set_state(StateEnum.LEARN_MENU.key)
+        print("Se termino el nivel " + str(self.number) + " de aprendizaje. Volviendo al menu de aprendizaje ...")
+        state.set_state(self._previous_state.key)
 
     def _verify_overflow(self):
         return self.current_word == -1 or self.current_word == len(self.words)
@@ -46,3 +47,6 @@ class Learn(Navigation):
         word = self.words[self.current_word]
         print(word)
         self.output.write(word.upper())
+
+    def _print_current_option(self):
+        print("Nivel " + str(self.number) + " de aprendizaje")

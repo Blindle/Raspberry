@@ -7,38 +7,32 @@ from state import state
 from state.stateEnum import StateEnum
 from helpers import processorHelper
 from helpers import configHelper
+from Navigation import Navigation
 
-class Write:
-
+class Write(Navigation):
+    _PREVIOUS_STATE = StateEnum.MENU
     POINT = 6
     letter, current_letter = 4, 0
 
     def __init__(self):
-        print("Comienza la escritura libre, toque boton Atras para salir ...")
+        self._previous_state = self._PREVIOUS_STATE
         self.output = processorHelper.get_output_processor()
         self._initialize_matrix()
+        self._print_current_option()
 
     def process_input(self, input_value):
         if input_value in range(1, self.POINT + 1):
-            point = input_value - 1
-            
-            if self.braille_matrix[self.current_letter][point] == 0:
-                self.braille_matrix[self.current_letter][point] = 1
-            else:
-                self.braille_matrix[self.current_letter][point] = 0
-            self._write()
+            self._fill_braille_matrix(input_value)
 
-        elif input_value == "right":
-            self.current_letter += 1
-            self._verify_overflow()
+        return super(Write, self).process_input(input_value)
+    
+    def _move_right(self):
+        self.current_letter += 1
+        self._verify_overflow()
 
-        elif input_value == "left":
-            self.current_letter -= 1
-            self._verify_overflow()
-
-        elif input_value == "back":
-            print("Regresando a " + StateEnum.MENU.real_name)
-            state.set_state(StateEnum.MENU.key)
+    def _move_left(self):
+        self.current_letter -= 1
+        self._verify_overflow()
 
     def _verify_overflow(self):
         if self.current_letter < 0:
@@ -46,9 +40,22 @@ class Write:
 
         elif self.current_letter == self.letter:
             self._resize_matrix()
+    
+    def _print_current_option(self):
+        print("Comienza la escritura libre, toque boton Atras para salir ...")
 
     def _initialize_matrix(self):
        self.braille_matrix = np.zeros((self.letter, self.POINT), dtype=np.int)
+
+    def _fill_braille_matrix(self, input_value):
+        point = input_value - 1
+        
+        if self.braille_matrix[self.current_letter][point] == 0:
+            self.braille_matrix[self.current_letter][point] = 1
+        else:
+            self.braille_matrix[self.current_letter][point] = 0
+
+        self._write()
 
     def _write(self):
         symbols = self._transform_points_into_symbols()
