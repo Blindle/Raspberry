@@ -4,7 +4,7 @@ class Navigation(object):
     def __init__(self):
         self._set_attributes()
 
-    def process_input(self, input_value):
+    def process_input(self, input_value):  #cambiar nombres de las funciones
         if input_value == "right":
             self._move_right()
 

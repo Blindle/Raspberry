@@ -12,7 +12,7 @@ from Navigation import Navigation
 class Write(Navigation):
     _PREVIOUS_STATE = StateEnum.MENU
     POINT = 6
-    letter, current_letter = 4, 0
+    letter, current_letter = 4, 0  #cambiar nombre de variable letter
 
     def __init__(self):
         super(Write, self).__init__()
