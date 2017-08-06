@@ -1,5 +1,6 @@
 import helpers.loadingHelper as loadingHelper
 import helpers.processorHelper as processorHelper
+import time
 
 from state import state
 
@@ -18,10 +19,12 @@ state_object = loadingHelper.get_state_object()
 
 while letter != "bye":
     previous_state = state.get_state()
-    #letter = my_input.get_input()
-    state_object.process_input(my_input.get_input())
+    letter = my_input.get_input()
+    state_object.process_input(letter)
     # musicPlayer.playLetter(letter)
     #print(letter)
     if previous_state != state.get_state():
         state_object = loadingHelper.get_state_object()
+        
+    time.sleep(0.1)    
     #my_output.write(letter)

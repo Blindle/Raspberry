@@ -18,32 +18,32 @@ class ButtonsInput:
     _POINT_1 = 1
     _POINT_2 = 2
 
-    sleep_time = 0.5
+    sleep_time = 0.1
 
     def __init__(self):
     	self._configure_raspberry_pins()
 
     def get_input(self):
-    	while True:
-            if GPIO.input(self.btn_1) == False: 
-                return self._MOVE_RIGHT
+    	#while True:
+        if GPIO.input(self.btn_1) == False:
+            return self._MOVE_RIGHT
 
-            if GPIO.input(self.btn_2) == False: 
-                return self._MOVE_LEFT
+        elif GPIO.input(self.btn_2) == False: 
+            return self._MOVE_LEFT
 
-            if GPIO.input(self.btn_3) == False: 
-                return self._ENTER
+        elif GPIO.input(self.btn_3) == False:
+            return self._ENTER
         
-            if GPIO.input(self.btn_4) == False: 
-                return self._BACK
+        elif GPIO.input(self.btn_4) == False:
+            return self._BACK
         
-            if GPIO.input(self.btn_5) == False: 
-                return self._POINT_1
+        elif GPIO.input(self.btn_5) == False: 
+            return self._POINT_1
         
-            if GPIO.input(self.btn_6) == False: 
-                return self._POINT_2
-        
-            time.sleep(self.sleep_time) 
+        elif GPIO.input(self.btn_6) == False: 
+            return self._POINT_2
+            
+            #time.sleep(self.sleep_time) 
 
     def __del__(self):
     	pass
