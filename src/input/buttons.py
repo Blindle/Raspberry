@@ -24,26 +24,27 @@ class ButtonsInput:
     	self._configure_raspberry_pins()
 
     def get_input(self):
-    	#while True:
-        if GPIO.input(self.btn_1) == False:
-            return self._MOVE_RIGHT
+        input_value = ""
+    	while input_value == "":
+            if GPIO.input(self.btn_1) == False:
+                input_value = self._MOVE_RIGHT
 
-        elif GPIO.input(self.btn_2) == False: 
-            return self._MOVE_LEFT
+            elif GPIO.input(self.btn_2) == False: 
+                input_value = self._MOVE_LEFT
 
-        elif GPIO.input(self.btn_3) == False:
-            return self._ENTER
-        
-        elif GPIO.input(self.btn_4) == False:
-            return self._BACK
-        
-        elif GPIO.input(self.btn_5) == False: 
-            return self._POINT_1
-        
-        elif GPIO.input(self.btn_6) == False: 
-            return self._POINT_2
+            elif GPIO.input(self.btn_3) == False:
+                input_value = self._ENTER
             
-            #time.sleep(self.sleep_time) 
+            elif GPIO.input(self.btn_4) == False:
+                input_value = self._BACK
+            
+            elif GPIO.input(self.btn_5) == False: 
+                input_value = self._POINT_1
+            
+            elif GPIO.input(self.btn_6) == False: 
+                input_value = self._POINT_2
+            
+            time.sleep(self.sleep_time) 
 
     def __del__(self):
     	pass

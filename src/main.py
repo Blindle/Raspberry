@@ -26,5 +26,5 @@ while letter != "bye":
     if previous_state != state.get_state():
         state_object = loadingHelper.get_state_object()
         
-    time.sleep(0.1)    
+    #time.sleep(0.1)    
     #my_output.write(letter)
