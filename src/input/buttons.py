@@ -44,7 +44,8 @@ class ButtonsInput:
             elif GPIO.input(self.btn_6) == False: 
                 input_value = self._POINT_2
             
-            time.sleep(self.sleep_time) 
+            time.sleep(self.sleep_time)
+        return input_value
 
     def __del__(self):
     	pass
