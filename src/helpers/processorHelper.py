@@ -1,17 +1,12 @@
 import configHelper
-from input.console import ConsoleInput
-from input.buttons import ButtonsInput
+from input_finder import Input
 from output.console import ConsoleOutput
 from output.arduino import ArduinoOutput
 
 CONFIG = configHelper.get_config()
 
 def get_input_processor():
-    if CONFIG['input'] == 'console':
-        my_input = ConsoleInput()
-    else:
-        my_input = ButtonsInput()
-    return my_input
+    return Input()
 
 def get_output_processor():
     if CONFIG['output'] == 'console':
@@ -19,3 +14,6 @@ def get_output_processor():
     else:
         my_output = ArduinoOutput(9600)
     return my_output
+
+def _import_buttons_input_module():
+    from input.buttons import ButtonsInput
