@@ -17,6 +17,3 @@ def get_output_processor():
     else:
         my_output = ArduinoOutput(9600)
     return my_output
-
-def _import_buttons_input_module():
-    from input.buttons import ButtonsInput
