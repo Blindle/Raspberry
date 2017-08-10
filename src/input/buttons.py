@@ -14,7 +14,6 @@ class ButtonsInput:
     _MOVE_LEFT = "left"
     _ENTER = "enter"
     _BACK = "back"
-    _ENTER = "enter"
     _POINT_1 = 1
     _POINT_2 = 2
 
