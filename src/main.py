@@ -3,25 +3,26 @@ import helpers.processorHelper as processorHelper
 
 from state import state
 
-my_input = processorHelper.get_input_processor()
-my_output = processorHelper.get_output_processor()
+input_processor = processorHelper.get_input_processor()
+output_processor = processorHelper.get_output_processor()
 
-my_output.write('HOLA')
+output_processor.write('HOLA')
 
 print("Starting!")
-letter = "start"
+my_input = "start"
 
 state_object = loadingHelper.get_state_object()
 
 # print(state.set_state('learn-menu'))
 # print(state.get_state())
 
-while letter != "bye":
+while my_input != "bye":
     previous_state = state.get_state()
-    #letter = my_input.get_input()
-    state_object.process_input(my_input.get_input())
+    my_input = input_processor.get_input()
+    state_object.process_input(my_input)
     # musicPlayer.playLetter(letter)
     #print(letter)
     if previous_state != state.get_state():
         state_object = loadingHelper.get_state_object()
+        
     #my_output.write(letter)
