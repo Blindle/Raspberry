@@ -1,6 +1,5 @@
 import configHelper
 
-
 CONFIG = configHelper.get_config()
 
 def get_input_processor():
