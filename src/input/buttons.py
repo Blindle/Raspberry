@@ -1,7 +1,8 @@
 import RPi.GPIO as GPIO
 import time
+from InputProcessor import InputProcessor
 
-class ButtonsInput:
+class ButtonsInput(InputProcessor):
 
     btn_1 = 21
     btn_2 = 20
