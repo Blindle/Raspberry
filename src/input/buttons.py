@@ -45,12 +45,8 @@ class ButtonsInput:
         GPIO.setmode(GPIO.BCM) 
         GPIO.setwarnings(False)
 
-        GPIO.setup(self.btn_1, GPIO.IN, GPIO.PUD_UP)
-        GPIO.setup(self.btn_2, GPIO.IN, GPIO.PUD_UP)
-        GPIO.setup(self.btn_3, GPIO.IN, GPIO.PUD_UP)
-        GPIO.setup(self.btn_4, GPIO.IN, GPIO.PUD_UP)
-        GPIO.setup(self.btn_5, GPIO.IN, GPIO.PUD_UP)
-        GPIO.setup(self.btn_6, GPIO.IN, GPIO.PUD_UP)
+        for pin in self._buttons_pins:
+            GPIO.setup(pin, GPIO.IN, GPIO.PUD_UP)
     
     def _init_previous_buttons_state_array(self):
         self._previous_buttons_state = []
