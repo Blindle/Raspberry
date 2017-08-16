@@ -3,7 +3,7 @@ import time
 
 class ButtonsInput:
 
-    _buttons_pins = [21, 20, 16, 26, 19, 13]
+    _buttons_pins = [21, 20, 16, 26, 19, 13, 2, 3, 4, 14]
     
     _MOVE_RIGHT = "right"
     _MOVE_LEFT = "left"
@@ -11,6 +11,10 @@ class ButtonsInput:
     _BACK = "back"
     _POINT_1 = 1
     _POINT_2 = 2
+    _POINT_3 = 3
+    _POINT_4 = 4
+    _POINT_5 = 5
+    _POINT_6 = 6
 
     _BUTTON_PRESSED = 0
     _BUTTON_NOT_PRESSED = 1
@@ -55,10 +59,14 @@ class ButtonsInput:
 
     def _get_pin_value(self, pin):
         return {
-            21: self._MOVE_RIGHT,
-            20: self._MOVE_LEFT,
-            16: self._ENTER,
-            26: self._BACK,
-            19: self._POINT_1,
-            13: self._POINT_2
+            4: self._MOVE_RIGHT,
+            14: self._MOVE_LEFT,
+            2: self._ENTER,
+            3: self._BACK,
+            21: self._POINT_1,
+            20: self._POINT_2,
+            16: self._POINT_3,
+            26: self._POINT_4,
+            19: self._POINT_5,
+            13: self._POINT_6
         }[pin]
