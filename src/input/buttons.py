@@ -3,7 +3,7 @@ import time
 
 class ButtonsInput:
 
-    _buttons_pins = [21, 20, 16, 26, 19, 13, 2, 3, 4, 14]
+    _buttons_pins = [21, 20, 16, 26, 19, 13, 22, 27, 17, 4]
     
     _MOVE_RIGHT = "right"
     _MOVE_LEFT = "left"
@@ -31,10 +31,10 @@ class ButtonsInput:
             for index, pin in enumerate(self._buttons_pins):
                 curr_state = GPIO.input(pin)
                 
-                if self._previous_buttons_state[index] == self._BUTTON_PRESSED and curr_state == self._BUTTON_NOT_PRESSED: # El boton se deja de presionar
+                if self._previous_buttons_state[index] == self._BUTTON_PRESSED and curr_state == self._BUTTON_NOT_PRESSED:
                     self._previous_buttons_state[index] = curr_state
 
-                elif self._previous_buttons_state[index] == self._BUTTON_NOT_PRESSED and curr_state == self._BUTTON_PRESSED: # Se presiona un boton
+                elif self._previous_buttons_state[index] == self._BUTTON_NOT_PRESSED and curr_state == self._BUTTON_PRESSED:
                     self._previous_buttons_state[index] = curr_state
                     input_value = self._get_pin_value(pin)
                     break
@@ -59,10 +59,10 @@ class ButtonsInput:
 
     def _get_pin_value(self, pin):
         return {
-            4: self._MOVE_RIGHT,
-            14: self._MOVE_LEFT,
-            2: self._ENTER,
-            3: self._BACK,
+            27: self._MOVE_RIGHT,
+            22: self._MOVE_LEFT,
+            17: self._ENTER,
+            4: self._BACK,
             21: self._POINT_1,
             20: self._POINT_2,
             16: self._POINT_3,
