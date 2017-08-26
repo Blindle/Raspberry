@@ -1,4 +1,6 @@
-class ConsoleOutput:
+from OutputProcessor import OutputProcessor
+
+class ConsoleOutput(OutputProcessor):
     def __init__(self):
         pass
 

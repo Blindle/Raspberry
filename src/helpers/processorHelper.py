@@ -1,6 +1,4 @@
 import configHelper
-from output.console import ConsoleOutput
-from output.arduino import ArduinoOutput
 
 CONFIG = configHelper.get_config()
 
@@ -13,7 +11,7 @@ def get_input_processor():
 
 def get_output_processor():
     if CONFIG['output'] == 'console':
-        my_output = ConsoleOutput()
+        from output.console import ConsoleOutput as Output
     else:
-        my_output = ArduinoOutput(9600)
-    return my_output
+        from output.arduino import ArduinoOutput as Output
+    return Output()

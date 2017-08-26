@@ -1,7 +1,8 @@
 import click
+from InputProcessor import InputProcessor
 
 
-class ConsoleInput:
+class ConsoleInput(InputProcessor):
     def __init__(self):
         pass
 
