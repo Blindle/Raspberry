@@ -20,6 +20,7 @@ class Learn(Navigation):
         self.output = processorHelper.get_output_processor()
         self._print_welcome_message()
         self._print_word()
+        self._play_word()
 
     def _set_attributes(self):
         super(Learn, self)._set_attributes()
@@ -29,7 +30,7 @@ class Learn(Navigation):
         self.current_word += 1
         if not self._verify_overflow():
             self._print_word()
-            musicHelper.play_word(self.words[self.current_word])
+            self._play_word()
         else:
             self._back_to_menu()
     
@@ -46,6 +47,9 @@ class Learn(Navigation):
 
     def _verify_overflow(self):
         return self.current_word == -1 or self.current_word == len(self.words)
+
+    def _play_word(self):
+        musicHelper.play_word(self.words[self.current_word])
     
     def _print_word(self):
         word = self.words[self.current_word]
@@ -54,6 +58,3 @@ class Learn(Navigation):
 
     def _print_welcome_message(self):
         print("Nivel " + str(self.number) + " de aprendizaje")
-
-    def _back_to_previous_state(self):
-        pass

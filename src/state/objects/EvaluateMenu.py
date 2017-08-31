@@ -1,5 +1,6 @@
 import sys
 import os
+import helpers.musicHelper as musicHelper
 sys.path.append(os.path.dirname(__file__) + "../")
 
 from state import state
@@ -20,3 +21,7 @@ class EvaluateMenu(Menu):
         self.state_options = self._STATE_OPTIONS
         self._previous_state = self._PREVIOUS_STATE
         self._next_state = self._NEXT_STATE
+
+    def _play_enter_action(self):
+        navigation_sound = self._NEXT_STATE.key + '-level' + str(self.state_options[self.current_option].key)
+        musicHelper.play_enter_action(navigation_sound)

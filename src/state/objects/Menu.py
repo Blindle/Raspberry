@@ -1,5 +1,6 @@
 import sys
 import os
+import helpers.musicHelper as musicHelper
 sys.path.append(os.path.dirname(__file__) + "../")
 
 from state import state
@@ -29,8 +30,8 @@ class Menu(Navigation):
         self._print_current_option()
 
     def _select_option(self):
-        print("Entrando a " +
-            self.state_options[self.current_option].real_name + " ...")
+        print("Entrando a " + self.state_options[self.current_option].real_name + " ...")
+        self._play_enter_action()
         self._set_new_state()
 
     def _verify_overflow(self):
@@ -43,9 +44,14 @@ class Menu(Navigation):
     
     def _print_current_option(self):
         print(self.state_options[self.current_option].real_name)
+        musicHelper.play_menu_option(self.state_options[self.current_option].key)
 
+    # FIXME: Hacer que el metodo lo implementen las clases hijas, como _play_enter_action
     def _set_new_state(self):
         if self._next_state != "":
             state.set_state(self._next_state.key, self.state_options[self.current_option].key)
         else:
             state.set_state(self.state_options[self.current_option].key)
+
+    def _play_enter_action(self):
+        pass
