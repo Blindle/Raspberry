@@ -9,9 +9,9 @@ from helpers import processorHelper
 from BrailleMatrixHandler import BrailleMatrixHandler
 
 class Evaluate(BrailleMatrixHandler):
-    _index_current_word = 0        # Index para saber que palabra estoy evaluando
+    _index_current_word = 0
     _PREVIOUS_STATE = StateEnum.EVALUATE_MENU
-    _LETTERS_SIZE = 3
+    _error_counter = 0
 
     def __init__(self, level_number):
         self.number = level_number
@@ -21,17 +21,10 @@ class Evaluate(BrailleMatrixHandler):
     def _set_attributes(self):
         super(Evaluate, self)._set_attributes()
         self._previous_state = self._PREVIOUS_STATE
-        self._letters_size = self._LETTERS_SIZE
 
     def _print_welcome_message(self):
         print("Nivel " + str(self.number) + " de evaluacion")
         print(self._get_current_word())
-
-    def _verify_overflow(self):
-        if self._current_letter < 0:
-            self._current_letter = 0
-        elif self._current_letter == len(self._get_current_word()):
-            self._current_letter -= 1
 
     def _select_option(self):
         evaluation_result = self._evaluate()
@@ -40,10 +33,12 @@ class Evaluate(BrailleMatrixHandler):
             if not self._is_last_word():
                 print("Palabra escrita correctamente. Se pasa a la siguiente palabra")
                 self._go_to_next_word()
+                self._error_counter = 0
             else:
                 self._back_to_menu()
         else:
             print("Palabra escrita de forma erronea.")
+            self._error_counter += 1
 
     def _go_to_next_word(self):
         self._index_current_word += 1
@@ -56,16 +51,13 @@ class Evaluate(BrailleMatrixHandler):
 
     def _reset_matrix(self):
         self._initialize_matrix()
+        self._current_letters_size = self._LETTERS_SIZE
         self._current_letter = 0
 
-    def _write(self):
-        symbols = self._transform_points_into_symbols(len(self._get_current_word()))
-        self.output.write(symbols)
-
     def _evaluate(self):
-        result = self._transform_points_into_symbols(len(self._get_current_word())).lower()
+        result = self._transform_points_into_symbols(self._current_letters_size).lower()
         print("Palabra ingresada: " + result + " - Palabra correcta: " + self._get_current_word())
-        return True  # Deberia devolver result == _get_current_word()
+        return result == self._get_current_word() or self._error_counter == 2
 
     def _is_last_word(self):
         return self._index_current_word == (len(self.words) - 1)

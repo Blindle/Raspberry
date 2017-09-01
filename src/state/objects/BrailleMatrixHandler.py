@@ -10,6 +10,7 @@ from Navigation import Navigation
 class BrailleMatrixHandler(Navigation):
     _current_letter = 0
     _POINTS_SIZE = 6
+    _LETTERS_SIZE = 1
 
     def __init__(self):
         super(BrailleMatrixHandler, self).__init__()
@@ -19,10 +20,10 @@ class BrailleMatrixHandler(Navigation):
 
     def _set_attributes(self):
         super(BrailleMatrixHandler, self)._set_attributes()
-        self._letters_size = 0
+        self._current_letters_size = self._LETTERS_SIZE
 
     def _initialize_matrix(self):
-       self.braille_matrix = np.zeros((self._letters_size, self._POINTS_SIZE), dtype=np.int)
+       self.braille_matrix = np.zeros((self._LETTERS_SIZE, self._POINTS_SIZE), dtype=np.int)
 
     def process_input(self, input_value):
         if input_value in range(1, self._POINTS_SIZE + 1):
@@ -38,6 +39,17 @@ class BrailleMatrixHandler(Navigation):
         self._current_letter -= 1
         self._verify_overflow()
 
+    def _verify_overflow(self):
+        if self._current_letter < 0:
+            self._current_letter = 0
+
+        elif self._current_letter == self._current_letters_size:
+            self._resize_matrix()
+
+    def _resize_matrix(self):
+        self._current_letters_size += 1
+        self.braille_matrix.resize((self._current_letters_size, self._POINTS_SIZE))
+
     def _fill_braille_matrix(self, input_value):
         point = input_value - 1
         
@@ -49,7 +61,7 @@ class BrailleMatrixHandler(Navigation):
         self._write()
 
     def _write(self):
-        symbols = self._transform_points_into_symbols()
+        symbols = self._transform_points_into_symbols(self._current_letters_size)
         self.output.write(symbols)
 
     def _transform_points_into_symbols(self, rows_size):
