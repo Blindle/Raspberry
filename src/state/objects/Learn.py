@@ -41,8 +41,10 @@ class Learn(Navigation):
         else:
             self.current_word = 0
 
+    # FIXME: Ver si este metodo se puede pasar a la clase Navigation, ya que la clase Evaluate tiene el mismo
     def _back_to_menu(self):
         print("Se termino el nivel " + str(self.number) + " de aprendizaje. Volviendo al menu de aprendizaje ...")
+        musicHelper.play_end_of_module_action(StateEnum.LEARN.key, self.number, self._previous_state.key)
         state.set_state(self._previous_state.key)
 
     def _verify_overflow(self):

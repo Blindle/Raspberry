@@ -20,16 +20,16 @@ pico2wave -w=enter-learn-level1.wav -l='es-ES' 'Entrando a nivel 1 de aprendizaj
 pico2wave -w=enter-learn-level2.wav -l='es-ES' 'Entrando a nivel 2 de aprendizaje'
 pico2wave -w=enter-learn-level3.wav -l='es-ES' 'Entrando a nivel 3 de aprendizaje'
 
-pico2wave -w=exit-learn-level1.wav -l='es-ES' 'Nivel 1 de aprendizaje finalizado'
-pico2wave -w=exit-learn-level2.wav -l='es-ES' 'Nivel 2 de aprendizaje finalizado'
-pico2wave -w=exit-learn-level3.wav -l='es-ES' 'Nivel 3 de aprendizaje finalizado'
+pico2wave -w=end-learn-level1.wav -l='es-ES' 'Nivel 1 de aprendizaje finalizado'
+pico2wave -w=end-learn-level2.wav -l='es-ES' 'Nivel 2 de aprendizaje finalizado'
+pico2wave -w=end-learn-level3.wav -l='es-ES' 'Nivel 3 de aprendizaje finalizado'
 pico2wave -w=backto-learn-menu.wav -l='es-ES' 'Regresando a menu de aprendizaje'
 
 pico2wave -w=enter-evaluate-level1.wav -l='es-ES' 'Entrando a nivel 1 de evaluacion'
 pico2wave -w=enter-evaluate-level2.wav -l='es-ES' 'Entrando a nivel 2 de evaluacion'
 pico2wave -w=enter-evaluate-level3.wav -l='es-ES' 'Entrando a nivel 3 de evaluacion'
 
-pico2wave -w=exit-evaluate-level1.wav -l='es-ES' 'Nivel 1 de evaluacion finalizado'
-pico2wave -w=exit-evaluate-level2.wav -l='es-ES' 'Nivel 2 de evaluacion finalizado'
-pico2wave -w=exit-evaluate-level3.wav -l='es-ES' 'Nivel 3 de evaluacion finalizado'
+pico2wave -w=end-evaluate-level1.wav -l='es-ES' 'Nivel 1 de evaluacion finalizado'
+pico2wave -w=end-evaluate-level2.wav -l='es-ES' 'Nivel 2 de evaluacion finalizado'
+pico2wave -w=end-evaluate-level3.wav -l='es-ES' 'Nivel 3 de evaluacion finalizado'
 pico2wave -w=backto-evaluate-menu.wav -l='es-ES' 'Regresando a menu de evaluacion'

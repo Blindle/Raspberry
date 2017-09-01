@@ -12,7 +12,7 @@ def play_word(word):
         _play_letter(letter)
 
 def _play_letter(letter):
-    pygame.mixer.music.load("audios/letters/" + letter.lower() + ".mp3")
+    pygame.mixer.music.load("audios/letters/" + letter.lower() + ".wav")
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:
     	continue
@@ -21,11 +21,15 @@ def play_menu_option(menu_option):
     menu_option = _is_level_number(menu_option)
     play_navigation_sound(menu_option)
 
-def play_enter_action(state):
-    play_navigation_sound("enter-" + state)
+def play_enter_action(next_state):
+    play_navigation_sound("enter-" + next_state)
 
-def play_back_to_action(state):
-    play_navigation_sound("backto-" + state)
+def play_back_to_action(prev_state):
+    play_navigation_sound("backto-" + prev_state)
+
+def play_end_of_module_action(state, level_number, prev_state):
+    play_navigation_sound("end-" + state + "-level" + str(level_number))
+    play_back_to_action(prev_state)
 
 def play_navigation_sound(sound_name):
     pygame.mixer.music.load("audios/navigation/" + sound_name + ".wav")
