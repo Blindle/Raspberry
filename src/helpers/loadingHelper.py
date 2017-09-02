@@ -11,6 +11,7 @@ from state.objects.LearnMenu import LearnMenu
 from state.objects.EvaluateMenu import EvaluateMenu
 from state.objects.Write import Write
 from state.objects.Learn import Learn
+from state.objects.Evaluate import Evaluate
 
 def get_state_object():
     current_state = state.get_state()
@@ -25,7 +26,7 @@ def get_state_object():
     elif current_state == StateEnum.WRITE.key:
         state_object = Write()
     elif current_state == StateEnum.EVALUATE.key:
-        state_object = 'Evaluate()'
+        state_object = Evaluate(state.get_level())
     elif current_state == StateEnum.CONFIG.key:
         state_object = 'Config()'
     else:
