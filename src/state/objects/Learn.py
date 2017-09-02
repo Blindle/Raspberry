@@ -20,6 +20,7 @@ class Learn(Navigation):
         self.output = processorHelper.get_output_processor()
         self._print_welcome_message()
         self._print_word()
+        self._play_word()
 
     def _set_attributes(self):
         super(Learn, self)._set_attributes()
@@ -29,7 +30,7 @@ class Learn(Navigation):
         self.current_word += 1
         if not self._verify_overflow():
             self._print_word()
-            musicHelper.play_word(self.words[self.current_word])
+            self._play_word()
         else:
             self._back_to_menu()
     
@@ -40,12 +41,17 @@ class Learn(Navigation):
         else:
             self.current_word = 0
 
+    # FIXME: Ver si este metodo se puede pasar a la clase Navigation, ya que la clase Evaluate tiene el mismo
     def _back_to_menu(self):
         print("Se termino el nivel " + str(self.number) + " de aprendizaje. Volviendo al menu de aprendizaje ...")
+        musicHelper.play_end_of_module_action(StateEnum.LEARN.key, self.number, self._previous_state.key)
         state.set_state(self._previous_state.key)
 
     def _verify_overflow(self):
         return self.current_word == -1 or self.current_word == len(self.words)
+
+    def _play_word(self):
+        musicHelper.play_word(self.words[self.current_word])
     
     def _print_word(self):
         word = self.words[self.current_word]
@@ -54,6 +60,3 @@ class Learn(Navigation):
 
     def _print_welcome_message(self):
         print("Nivel " + str(self.number) + " de aprendizaje")
-
-    def _back_to_previous_state(self):
-        pass

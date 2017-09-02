@@ -1,5 +1,6 @@
 import sys
 import os
+import helpers.musicHelper as musicHelper
 sys.path.append(os.path.dirname(__file__) + "../")
 
 from state.stateEnum import StateEnum
@@ -18,3 +19,6 @@ class MainMenu(Menu):
     def _set_attributes(self):
         super(MainMenu, self)._set_attributes()
         self.state_options = self._STATE_OPTIONS
+
+    def _play_enter_action(self):
+        musicHelper.play_enter_action(self.state_options[self.current_option].key)

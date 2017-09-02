@@ -1,3 +1,4 @@
+import helpers.musicHelper as musicHelper
 from state import state
 
 class Navigation(object): 
@@ -28,6 +29,7 @@ class Navigation(object):
     
     def _back_to_previous_state(self):
         print("Regresando a " + self._previous_state.real_name)
+        musicHelper.play_back_to_action(self._previous_state.key)
         state.set_state(self._previous_state.key)
     
     def _verify_overflow(self):
