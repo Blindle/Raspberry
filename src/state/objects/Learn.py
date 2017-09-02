@@ -38,6 +38,7 @@ class Learn(Navigation):
         self.current_word -= 1
         if not self._verify_overflow():
             self._print_word()
+            self._play_word()
         else:
             self.current_word = 0
 
