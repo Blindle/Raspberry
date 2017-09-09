@@ -4,7 +4,7 @@ from InputProcessor import InputProcessor
 
 class ButtonsInput(InputProcessor):
 
-    _buttons_pins = [21, 20, 16, 26, 19, 13, 22, 27, 17, 4]
+    _buttons_pins = [17, 27, 22, 23, 24, 5, 6, 13, 19, 26]
     
     _MOVE_RIGHT = "right"
     _MOVE_LEFT = "left"
@@ -60,14 +60,14 @@ class ButtonsInput(InputProcessor):
 
     def _get_pin_value(self, pin):
         return {
-            27: self._MOVE_RIGHT,
-            22: self._MOVE_LEFT,
-            17: self._ENTER,
-            4: self._BACK,
-            21: self._POINT_1,
-            20: self._POINT_2,
-            16: self._POINT_3,
-            26: self._POINT_4,
-            19: self._POINT_5,
-            13: self._POINT_6
+            17: self._MOVE_LEFT,
+            27: self._POINT_1,
+            22: self._POINT_2,
+            23: self._POINT_3,
+            24: self._BACK,
+            5: self._ENTER,
+            6: self._POINT_4,
+            13: self._POINT_5,
+            19: self._POINT_6,
+            26: self._MOVE_RIGHT
         }[pin]
