@@ -37,9 +37,10 @@ pico2wave -w=end-evaluate-level3.wav -l='es-ES' 'Nivel 3 de evaluación finaliza
 pico2wave -w=backto-evaluate-menu.wav -l='es-ES' 'Regresando al menú de evaluación'
 
 pico2wave -w=evaluate-representMessage.wav -l='es-ES' 'La palabra que se debe representar es'
-pico2wave -w=evaluate-nextWord.wav -l='es-ES' 'La palabra fue escrita correctamente. Se pasa a la siguiente palabra'
-pico2wave -w=evaluate-errorMessage.wav -l='es-ES' 'Escribiste mal capo, ponéla de vuelta'
-pico2wave -w=evaluate-nextWordWithError.wav -l='es-ES' 'Se pasa a la siguiente palabra porque fallaste tres veces'
+pico2wave -w=evaluate-nextWord.wav -l='es-ES' 'Se pasa a la siguiente palabra'
+pico2wave -w=evaluate-correctMessage.wav -l='es-ES' 'Palabra escrita correctamente.'
+pico2wave -w=evaluate-errorMessage.wav -l='es-ES' 'Palabra escrita incorrectamente.'
+pico2wave -w=evaluate-maxCantErrorsMessage.wav -l='es-ES' 'Cometiste tres errores.'
 
 cd ../letters
 rm *.wav
