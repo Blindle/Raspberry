@@ -12,6 +12,7 @@ from state.objects.EvaluateMenu import EvaluateMenu
 from state.objects.Write import Write
 from state.objects.Learn import Learn
 from state.objects.Evaluate import Evaluate
+from state.objects.ConfigurationMenu import ConfigurationMenu
 
 def get_state_object():
     current_state = state.get_state()
@@ -28,7 +29,7 @@ def get_state_object():
     elif current_state == StateEnum.EVALUATE.key:
         state_object = Evaluate(state.get_level())
     elif current_state == StateEnum.CONFIG.key:
-        state_object = 'Config()'
+        state_object = ConfigurationMenu()
     else:
         raise Exception('The state isnt valid')
 
