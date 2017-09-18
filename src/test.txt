@@ -1,0 +1,8 @@
+aprendizaje:
+1: a, b, c
+2: aa, bb, cc
+3: aaa, bbb, ccc
+evaluacion:
+1: q, w, e
+2: qq, ww, ee
+3: qqq, www, eee
