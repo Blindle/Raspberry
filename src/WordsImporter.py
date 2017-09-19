@@ -7,9 +7,8 @@ class WordsImporter():
     EVALUATE = "evaluacion"
 
     def import_words(self):
-        f = open("test.txt", "r")
+        f = open("palabras_a_cargar.txt", "r")
         result_dict = dict()
-        
         line = f.readline()
         while line:
             line = line.replace('\n', '').replace('\r', '').replace(':', '')
@@ -21,10 +20,7 @@ class WordsImporter():
                 print("ERROR")
             line = f.readline()
         f.close()
-
-        json_str = json.dumps(result_dict)
-        parsed = json.loads(json_str)
-        print json.dumps(parsed, indent=4, sort_keys=True)
+        self._write_custom_levels_file(result_dict)
 
     def _decode_module_words(self, file, module_key, result_dict):
         line = file.readline()
@@ -35,7 +31,7 @@ class WordsImporter():
         dict_3 = self._decode_level_words(line)
 
         result_dict[module_key] = [dict_1, dict_2, dict_3]
-        return my_dict
+        return result_dict
 
     def _decode_level_words(self, level_line):
         my_dict = dict()
@@ -55,3 +51,11 @@ class WordsImporter():
         my_dict["words"] = words_processed
 
         return my_dict
+
+    def _write_custom_levels_file(self, result_dict):
+        json_str = json.dumps(result_dict)
+        parsed = json.loads(json_str)
+
+        file_to_write = open("config/custom_levels.json", 'w')
+        file_to_write.write(json.dumps(parsed, indent=4, sort_keys=True))
+        file_to_write.close()
