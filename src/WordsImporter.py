@@ -8,6 +8,7 @@ class WordsImporter():
 
     def import_words(self):
         f = open("palabras_a_cargar.txt", "r")
+        os.system("rm audios/words/*.wav")
         result_dict = dict()
         line = f.readline()
         while line:
@@ -49,6 +50,7 @@ class WordsImporter():
 
         my_dict["id"] = level_number
         my_dict["words"] = words_processed
+        #self._generate_audio_words(words_processed)
 
         return my_dict
 
@@ -59,3 +61,7 @@ class WordsImporter():
         file_to_write = open("config/custom_levels.json", 'w')
         file_to_write.write(json.dumps(parsed, indent=4, sort_keys=True))
         file_to_write.close()
+
+    def _generate_audio_words(self, words):
+        for word in words:
+            os.system("pico2wave -w=audios/words/{}.wav -l='es-ES' '{}'".format(word, word))

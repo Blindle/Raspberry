@@ -6,11 +6,11 @@ states = [StateEnum.MENU.key,
           StateEnum.LEARN.key,
           StateEnum.WRITE.key,
           StateEnum.EVALUATE.key,
-          StateEnum.CONFIG.key
+          StateEnum.CONFIG.key,
+          StateEnum.REGULATION.key
          ]
 
 state_variables = {'state': StateEnum.MENU.key, 'level': StateEnum.LEVEL_1.key}
-
 
 def set_state(new_state, new_level=None):
     if new_state in states:

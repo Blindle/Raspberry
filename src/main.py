@@ -1,7 +1,6 @@
 import helpers.loadingHelper as loadingHelper
 import helpers.processorHelper as processorHelper
 import helpers.musicHelper as musicHelper
-import os
 
 from WordsImporter import WordsImporter
 from state import state
@@ -14,8 +13,8 @@ output_processor.write('HOLA')
 print("Starting!")
 my_input = "start"
 
-w = WordsImporter()
-w.import_words()
+#w = WordsImporter()
+#w.import_words()
 
 musicHelper.play_navigation_sound("welcomeMessage")
 

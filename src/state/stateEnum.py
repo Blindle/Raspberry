@@ -8,6 +8,7 @@ class StateEnum(Enum):
 	WRITE         = ('write', 'Escritura')
 	EVALUATE      = ('evaluate', 'Evaluacion')
 	CONFIG        = ('config', 'Configuracion')
+	REGULATION    = ('regulation', 'Regulacion de motores')
 	LEVEL_1       = (1, 'Nivel 1')
 	LEVEL_2       = (2, 'Nivel 2')
 	LEVEL_3       = (3, 'Nivel 3')

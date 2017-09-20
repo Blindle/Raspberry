@@ -42,6 +42,19 @@ pico2wave -w=evaluate-correctMessage.wav -l='es-ES' 'Palabra escrita correctamen
 pico2wave -w=evaluate-errorMessage.wav -l='es-ES' 'Palabra escrita incorrectamente.'
 pico2wave -w=evaluate-maxCantErrorsMessage.wav -l='es-ES' 'Cometiste tres errores.'
 
+pico2wave -w=regulation.wav -l='es-ES' 'Regular motores'
+pico2wave -w=enter-regulation.wav -l='es-ES' 'Entrando a la regulación de los motores'
+pico2wave -w=motor1.wav -l='es-ES' 'Motor 1'
+pico2wave -w=motor2.wav -l='es-ES' 'Motor 2'
+pico2wave -w=motor3.wav -l='es-ES' 'Motor 3'
+pico2wave -w=motor4.wav -l='es-ES' 'Motor 4'
+pico2wave -w=motor5.wav -l='es-ES' 'Motor 5'
+pico2wave -w=motor6.wav -l='es-ES' 'Motor 6'
+pico2wave -w=motor7.wav -l='es-ES' 'Motor 7'
+pico2wave -w=motor8.wav -l='es-ES' 'Motor 8'
+pico2wave -w=move-L.wav -l='es-ES' 'Moviendo hacia la izquierda'
+pico2wave -w=move-R.wav -l='es-ES' 'Moviendo hacia la derecha'
+
 cd ../letters
 rm *.wav
 pico2wave -w=a.wav -l='es-ES' 'a'

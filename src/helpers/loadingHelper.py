@@ -13,6 +13,7 @@ from state.objects.Write import Write
 from state.objects.Learn import Learn
 from state.objects.Evaluate import Evaluate
 from state.objects.ConfigurationMenu import ConfigurationMenu
+from state.objects.EngineRegulation import EngineRegulation
 
 def get_state_object():
     current_state = state.get_state()
@@ -30,6 +31,8 @@ def get_state_object():
         state_object = Evaluate(state.get_level())
     elif current_state == StateEnum.CONFIG.key:
         state_object = ConfigurationMenu()
+    elif current_state == StateEnum.REGULATION.key:
+        state_object = EngineRegulation()
     else:
         raise Exception('The state isnt valid')
 

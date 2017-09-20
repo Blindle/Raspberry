@@ -1,7 +1,6 @@
 import sys
 import os
 import helpers.musicHelper as musicHelper
-sys.path.append(os.path.dirname(__file__) + "../")
 
 from state import state
 from state.stateEnum import StateEnum
@@ -9,9 +8,9 @@ from Menu import Menu
 from state import state
 
 class ConfigurationMenu(Menu):
-    _STATE_OPTIONS = [StateEnum.LEVEL_1, StateEnum.LEVEL_2, StateEnum.LEVEL_3]
+    _STATE_OPTIONS = [StateEnum.REGULATION]
     _PREVIOUS_STATE = StateEnum.MENU
-    _NEXT_STATE = StateEnum.EVALUATE
+    _NEXT_STATE = StateEnum.REGULATION
 
     def __init__(self):
         super(ConfigurationMenu, self).__init__()
@@ -23,5 +22,5 @@ class ConfigurationMenu(Menu):
         self._next_state = self._NEXT_STATE
 
     def _play_enter_action(self):
-        navigation_sound = self._NEXT_STATE.key + '-level' + str(self.state_options[self.current_option].key)
+        navigation_sound = self._NEXT_STATE.key
         musicHelper.play_enter_action(navigation_sound)
