@@ -54,6 +54,7 @@ pico2wave -w=motor7.wav -l='es-ES' 'Motor 7'
 pico2wave -w=motor8.wav -l='es-ES' 'Motor 8'
 pico2wave -w=move-L.wav -l='es-ES' 'Moviendo hacia la izquierda'
 pico2wave -w=move-R.wav -l='es-ES' 'Moviendo hacia la derecha'
+pico2wave -w=backto-config.wav -l='es-ES' 'Regresando a Configuración'
 
 cd ../letters
 rm *.wav

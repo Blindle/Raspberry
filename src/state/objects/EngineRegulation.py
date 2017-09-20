@@ -18,6 +18,10 @@ class EngineRegulation(Navigation):
         self.output = processorHelper.get_output_processor()
         self._print_current_motor()
 
+    def _set_attributes(self):
+        super(EngineRegulation, self)._set_attributes()
+        self._previous_state = self._PREVIOUS_STATE
+
     def process_input(self, input_value):
         if input_value == self._RIGHT_BUTTON_VALUE or input_value == self._LEFT_BUTTON_VALUE:
             self._regulate_engine(input_value)
@@ -36,10 +40,9 @@ class EngineRegulation(Navigation):
 
     def _verify_overflow(self):
         if self._current_motor < 0:
-            self._current_motor = 0
-
-        elif self._current_motor == self._MOTORS_SIZE:
             self._current_motor = self._MOTORS_SIZE - 1
+        elif self._current_motor == self._MOTORS_SIZE:
+            self._current_motor = 0
 
     def _print_current_motor(self):
         motor_str = str(self._current_motor + 1)
