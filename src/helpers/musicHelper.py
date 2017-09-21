@@ -8,6 +8,12 @@ pygame.mixer.pre_init(18000, -16, 2, 2048)
 pygame.mixer.init()
 
 def play_word(word):
+    pygame.mixer.music.load("audios/words/" + word + ".wav")
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy() == True:
+    	continue
+
+def play_word_spell_out(word):
     for letter in word:
         _play_letter(letter)
 
@@ -41,3 +47,16 @@ def _is_level_number(menu_option):
     if menu_option == 1 or menu_option == 2 or menu_option == 3:
         menu_option = 'level' + str(menu_option)
     return menu_option
+
+def generate_word_sounds(words):
+    os.system("rm audios/words/*.wav")
+    for word in words:
+        os.system("pico2wave -w=audios/words/{}.wav -l='es-ES' '{}'".format(word, word))
+
+def generate_navigation_sound(file_name, speech):
+    os.system("pico2wave -w=audios/navigation/{}.wav -l='es-ES' '{}'".format(file_name, speech))
+
+def generate_letter_sounds(letters):
+    os.system("rm audios/letters/*.wav")
+    for letter in letters:
+        os.system("pico2wave -w=audios/letters/{}.wav -l='es-ES' '{}'".format(letter, letter))

@@ -1,53 +1,55 @@
 {
     "evaluation-levels": [
         {
-            "id": "1", 
+            "id": 1, 
             "words": [
-                "q", 
+                "m", 
                 "w", 
-                "e"
+                "e", 
+                "r"
             ]
         }, 
         {
-            "id": "2", 
+            "id": 2, 
             "words": [
-                "qq", 
-                "ww", 
-                "ee"
+                "fa", 
+                "la", 
+                "si"
             ]
         }, 
         {
-            "id": "3", 
+            "id": 3, 
             "words": [
-                "qqq", 
-                "www", 
-                "eee"
+                "sol", 
+                "rosa", 
+                "agua"
             ]
         }
     ], 
     "learn-levels": [
         {
-            "id": "1", 
+            "id": 1, 
             "words": [
-                "a", 
-                "b", 
-                "c"
+                "h", 
+                "j", 
+                "k", 
+                "q"
             ]
         }, 
         {
-            "id": "2", 
+            "id": 2, 
             "words": [
-                "aa", 
-                "bb", 
-                "cc"
+                "do", 
+                "re", 
+                "mi"
             ]
         }, 
         {
-            "id": "3", 
+            "id": 3, 
             "words": [
-                "aaa", 
-                "bbb", 
-                "ccc"
+                "azul", 
+                "rojo", 
+                "gris"
             ]
         }
     ]

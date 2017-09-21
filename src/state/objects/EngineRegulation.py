@@ -57,5 +57,7 @@ class EngineRegulation(Navigation):
             direction = self._LEFT
         motor_number = self._current_motor + 1
         message_to_send = "-{}{}".format(direction, str(motor_number))
+
+        print("Enviando " + message_to_send)
         musicHelper.play_navigation_sound("move-" + direction)
         self.output.write(message_to_send)

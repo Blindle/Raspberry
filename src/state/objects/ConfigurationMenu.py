@@ -8,9 +8,8 @@ from Menu import Menu
 from state import state
 
 class ConfigurationMenu(Menu):
-    _STATE_OPTIONS = [StateEnum.REGULATION]
+    _STATE_OPTIONS = [StateEnum.REGULATION, StateEnum.WORDS_IMPORTER, StateEnum.SOUNDS_GENERATOR, StateEnum.WORD_SOURCE]
     _PREVIOUS_STATE = StateEnum.MENU
-    _NEXT_STATE = StateEnum.REGULATION
 
     def __init__(self):
         super(ConfigurationMenu, self).__init__()
@@ -19,8 +18,13 @@ class ConfigurationMenu(Menu):
         super(ConfigurationMenu, self)._set_attributes()
         self.state_options = self._STATE_OPTIONS
         self._previous_state = self._PREVIOUS_STATE
-        self._next_state = self._NEXT_STATE
 
     def _play_enter_action(self):
-        navigation_sound = self._NEXT_STATE.key
+        navigation_sound = self._get_current_option().key
         musicHelper.play_enter_action(navigation_sound)
+
+    def _get_current_option(self):
+        return self.state_options[self.current_option]
+
+    def _set_new_state(self):
+        state.set_state(self._get_current_option().key)
