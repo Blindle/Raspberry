@@ -47,6 +47,7 @@ class BlindeSoundsGenerator(Navigation):
         musicHelper.generate_navigation_sound("end-learn-level2", "Nivel 2 de aprendizaje finalizado")
         musicHelper.generate_navigation_sound("end-learn-level3", "Nivel 3 de aprendizaje finalizado")
         musicHelper.generate_navigation_sound("backto-learn-menu", "Regresando al menú de aprendizaje")
+        musicHelper.generate_navigation_sound("points", "Puntos")
 
         # Write Module
         musicHelper.generate_navigation_sound("write", "Escritura libre")

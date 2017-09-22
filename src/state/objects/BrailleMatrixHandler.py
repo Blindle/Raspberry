@@ -74,5 +74,4 @@ class BrailleMatrixHandler(Navigation):
         return symbols
 
     def _get_and_format_symbol(self, braille_points):
-        symbol = configHelper.get_symbol(braille_points)
-        return symbol.replace('\n', '').replace('\r', '')
+        return configHelper.get_symbol(braille_points)

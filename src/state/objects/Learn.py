@@ -52,7 +52,9 @@ class Learn(Navigation):
         return self.current_word == -1 or self.current_word == len(self.words)
 
     def _play_word(self):
+        musicHelper.play_navigation_sound("word")
         musicHelper.play_word(self.words[self.current_word])
+        musicHelper.play_word_spell_out(self.words[self.current_word].upper())
     
     def _print_word(self):
         word = self.words[self.current_word]

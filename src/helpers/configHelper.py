@@ -10,10 +10,15 @@ import os
 
 with open(os.path.dirname(__file__) + '/../config/symbols.config') as data_file:
     symbols_dict = dict()
+    points_dict = dict()
     for line in data_file:
         fields = line.split("=")
-        symbols_dict[fields[0]] = fields[1]
+        points = fields[0]
+        symbol = fields[1].replace('\n', '').replace('\r', '')
+        symbols_dict[points] = symbol
+        points_dict[symbol] = points
     SYMBOLS_CONFIG = symbols_dict
+    POINTS_CONFIG = points_dict
 
 ##FIXME: Hice esto para que me traiga dinamicamente los cambios en la configuracion.
 # Ver si hay otra mejor manera de hacerlo 
@@ -28,6 +33,9 @@ def get_level_config(mode, level_number):
 
 def get_symbol(key):
     return SYMBOLS_CONFIG[key]
+
+def get_points(symbol):
+    return POINTS_CONFIG[symbol]
 
 def update_system_config(key, value):
     system_config = get_config()
