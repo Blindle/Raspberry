@@ -17,7 +17,7 @@ def play_word_spell_out(word):
     for letter in word:
         _play_letter(letter)
 
-def _play_letter(letter):
+def play_letter(letter):
     pygame.mixer.music.load("audios/letters/" + letter.lower() + ".wav")
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:

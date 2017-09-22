@@ -12,7 +12,7 @@ from BrailleMatrixHandler import BrailleMatrixHandler
 class Evaluate(BrailleMatrixHandler):
     _index_current_word = 0
     _PREVIOUS_STATE = StateEnum.EVALUATE_MENU
-    _ERROR_QUOTA = 3
+    _ERROR_BOUND = 3
 
     def __init__(self, level_number):
         self.number = level_number
@@ -67,7 +67,7 @@ class Evaluate(BrailleMatrixHandler):
         print("Palabra ingresada: " + written_word + " - Palabra correcta: " + self._get_current_word())
         if(not result):
             self._increment_error_counter()
-        return result or self._get_current_error_counter() == self._ERROR_QUOTA
+        return result or self._get_current_error_counter() == self._ERROR_BOUND
 
     def _is_last_word(self):
         return self._index_current_word == (len(self.words) - 1)
@@ -90,14 +90,25 @@ class Evaluate(BrailleMatrixHandler):
     def _increment_error_counter(self):
         self._errors_array[self._index_current_word] += 1
 
-    def _print_evaluation_result(self):
-        index = 0
-        for word in self.words:
-            print('Palabra ' + word + ' - Errores: ' + str(self._errors_array[index]))
-            index += 1
-
     def _play_evaluation_result(self):
         sound_name = 'evaluate-correctMessage'
-        if self._get_current_error_counter() == self._ERROR_QUOTA:
+        if self._get_current_error_counter() == self._ERROR_BOUND:
             sound_name = 'evaluate-maxCantErrorsMessage'
         musicHelper.play_navigation_sound(sound_name)
+
+    def _print_evaluation_result(self):
+        index = 0
+        musicHelper.play_navigation_sound("evaluate-result")
+        for word in self.words:
+            print('Palabra ' + word + ' - Errores: ' + str(self._errors_array[index]))
+            self._play_result(word, str(self._errors_array[index]))
+            index += 1
+
+    def _play_result(self, word, errors):
+        sound_name = "word"
+        if len(word) == 1:
+            sound_name = "letter"
+        musicHelper.play_navigation_sound(sound_name)
+        musicHelper.play_word(word)
+        musicHelper.play_navigation_sound("mistakes")
+        musicHelper.play_letter(errors)

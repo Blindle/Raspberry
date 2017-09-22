@@ -36,19 +36,10 @@ class BlindeSoundsGenerator(Navigation):
 
     def _generate_navigation_sounds(self):
         os.system("rm audios/navigation/*.wav")
-        musicHelper.generate_navigation_sound("welcomeMessage", "Bienvenido a Bláindel")
+
+        # Learn Module
         musicHelper.generate_navigation_sound("learn-menu", "Modo Aprendizaje")
-        musicHelper.generate_navigation_sound("write", "Escritura libre")
-        musicHelper.generate_navigation_sound("evaluate-menu", "Modo Evaluación")
-        musicHelper.generate_navigation_sound("config", "Configuración")
-        musicHelper.generate_navigation_sound("level1", "Nivel 1")
-        musicHelper.generate_navigation_sound("level2", "Nivel 2")
-        musicHelper.generate_navigation_sound("level3", "Nivel 3")
         musicHelper.generate_navigation_sound("enter-learn-menu", "Entrando al menú de aprendizaje. Seleccione un nivel")
-        musicHelper.generate_navigation_sound("enter-evaluate-menu", "Entrando al menú de evaluación. Seleccione un nivel")
-        musicHelper.generate_navigation_sound("enter-write", "Comienza la escritura libre, toque el botón atras para salir")
-        musicHelper.generate_navigation_sound("enter-config", "Entrando a la configuración")
-        musicHelper.generate_navigation_sound("backto-menu", "Regresando al menú principal")
         musicHelper.generate_navigation_sound("enter-learn-level1", "Entrando al nivel 1 de aprendizaje")
         musicHelper.generate_navigation_sound("enter-learn-level2", "Entrando al nivel 2 de aprendizaje")
         musicHelper.generate_navigation_sound("enter-learn-level3", "Entrando al nivel 3 de aprendizaje")
@@ -56,6 +47,14 @@ class BlindeSoundsGenerator(Navigation):
         musicHelper.generate_navigation_sound("end-learn-level2", "Nivel 2 de aprendizaje finalizado")
         musicHelper.generate_navigation_sound("end-learn-level3", "Nivel 3 de aprendizaje finalizado")
         musicHelper.generate_navigation_sound("backto-learn-menu", "Regresando al menú de aprendizaje")
+
+        # Write Module
+        musicHelper.generate_navigation_sound("write", "Escritura libre")
+        musicHelper.generate_navigation_sound("enter-write", "Comienza la escritura libre, toque el botón atras para salir")
+
+        # Evaluate Module
+        musicHelper.generate_navigation_sound("evaluate-menu", "Modo Evaluación")
+        musicHelper.generate_navigation_sound("enter-evaluate-menu", "Entrando al menú de evaluación. Seleccione un nivel")
         musicHelper.generate_navigation_sound("enter-evaluate-level1", "Entrando al nivel 1 de evaluación")
         musicHelper.generate_navigation_sound("enter-evaluate-level2", "Entrando al nivel 2 de evaluación")
         musicHelper.generate_navigation_sound("enter-evaluate-level3", "Entrando al nivel 3 de evaluación")
@@ -68,6 +67,17 @@ class BlindeSoundsGenerator(Navigation):
         musicHelper.generate_navigation_sound("evaluate-correctMessage", "Palabra escrita correctamente.")
         musicHelper.generate_navigation_sound("evaluate-errorMessage", "Palabra escrita incorrectamente.")
         musicHelper.generate_navigation_sound("evaluate-maxCantErrorsMessage", "Cometiste tres errores.")
+        musicHelper.generate_navigation_sound("evaluate-result", "Resultado de la evaluación")
+        musicHelper.generate_navigation_sound("letter", "Letra")
+        musicHelper.generate_navigation_sound("word", "Palabra")
+        musicHelper.generate_navigation_sound("mistakes", "Errores")
+
+        # Configuration
+        musicHelper.generate_navigation_sound("config", "Configuración")
+        musicHelper.generate_navigation_sound("enter-config", "Entrando a la configuración")
+        musicHelper.generate_navigation_sound("backto-config", "Regresando a Configuración")
+
+        # Engine Regulation
         musicHelper.generate_navigation_sound("regulation", "Regular motores")
         musicHelper.generate_navigation_sound("enter-regulation", "Entrando a la regulación de los motores")
         musicHelper.generate_navigation_sound("motor1", "Motor 1")
@@ -80,24 +90,36 @@ class BlindeSoundsGenerator(Navigation):
         musicHelper.generate_navigation_sound("motor8", "Motor 8")
         musicHelper.generate_navigation_sound("move-L", "Moviendo hacia la izquierda")
         musicHelper.generate_navigation_sound("move-R", "Moviendo hacia la derecha")
-        musicHelper.generate_navigation_sound("backto-config", "Regresando a Configuración")
-        
-        musicHelper.generate_navigation_sound("words-importer", "Cargar nuevas palabras")
-        musicHelper.generate_navigation_sound("enter-words-importer", "Entrando a la carga de nuevas palabras")
-        musicHelper.generate_navigation_sound("words-importer-message", "Pulse el botón enter para comenzar con la carga de palabras")
-        musicHelper.generate_navigation_sound("words-importer-ok", "Carga de palabras exitosa")
-        musicHelper.generate_navigation_sound("words-importer-error", "Hubo un error en la carga de palabras")
-        musicHelper.generate_navigation_sound("sounds-generator", "Generar sonidos de Bláindel")
-        musicHelper.generate_navigation_sound("enter-sounds-generator", "Entrando a la generación de sonidos de Bláindel")
-        musicHelper.generate_navigation_sound("sounds-generator-message", "Pulse el botón enter para generar los sonidos por defecto")
-        musicHelper.generate_navigation_sound("sounds-generator-ok", "Generación de sonidos exitosa")
-        
+
+        # Word Source
         musicHelper.generate_navigation_sound("word-source", "Fuente de palabras")
         musicHelper.generate_navigation_sound("enter-word-source", "Entrando a fuente de palabras")
         musicHelper.generate_navigation_sound("word-source-message", "Seleccione la fuente de palabras, toque enter para confirmar. La fuente actual es")
         musicHelper.generate_navigation_sound("word-source-default", "Por defecto")
         musicHelper.generate_navigation_sound("word-source-custom", "Personalizada")
         musicHelper.generate_navigation_sound("word-source-selection", "Ha seleccionado la fuente de palabras")
+        
+        # Words Importer
+        musicHelper.generate_navigation_sound("words-importer", "Cargar nuevas palabras")
+        musicHelper.generate_navigation_sound("enter-words-importer", "Entrando a la carga de nuevas palabras")
+        musicHelper.generate_navigation_sound("words-importer-message", "Pulse el botón enter para comenzar con la carga de palabras")
+        musicHelper.generate_navigation_sound("words-importer-ok", "Carga de palabras exitosa")
+        musicHelper.generate_navigation_sound("words-importer-error", "Hubo un error en la carga de palabras")
+        
+        # Sounds Generator
+        musicHelper.generate_navigation_sound("sounds-generator", "Generar sonidos de Bláindel")
+        musicHelper.generate_navigation_sound("enter-sounds-generator", "Entrando a la generación de sonidos de Bláindel")
+        musicHelper.generate_navigation_sound("sounds-generator-message", "Pulse el botón enter para generar los sonidos por defecto")
+        musicHelper.generate_navigation_sound("sounds-generator-ok", "Generación de sonidos exitosa")
+
+        # Levels
+        musicHelper.generate_navigation_sound("level1", "Nivel 1")
+        musicHelper.generate_navigation_sound("level2", "Nivel 2")
+        musicHelper.generate_navigation_sound("level3", "Nivel 3")
+
+        #Others
+        musicHelper.generate_navigation_sound("welcomeMessage", "Bienvenido a Bláindel")
+        musicHelper.generate_navigation_sound("backto-menu", "Regresando al menú principal")
 
     def _generate_letters_sounds(self):
         letters = []
@@ -128,4 +150,14 @@ class BlindeSoundsGenerator(Navigation):
         letters.extend('x')
         letters.extend('y')
         letters.extend('z')
+        letters.extend('0')
+        letters.extend('1')
+        letters.extend('2')
+        letters.extend('3')
+        letters.extend('4')
+        letters.extend('5')
+        letters.extend('6')
+        letters.extend('7')
+        letters.extend('8')
+        letters.extend('9')
         musicHelper.generate_letter_sounds(letters)
