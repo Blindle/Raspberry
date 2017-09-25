@@ -52,6 +52,9 @@ class BlindeSoundsGenerator(Navigation):
         # Write Module
         musicHelper.generate_navigation_sound("write", "Escritura libre")
         musicHelper.generate_navigation_sound("enter-write", "Comienza la escritura libre, toque el botón atras para salir")
+        musicHelper.generate_navigation_sound("write-confirmMsg", "Si desea guardar toque Enter, sino toque Atrás")
+        musicHelper.generate_navigation_sound("write-saveOk", "Archivo guardado correctamente")
+        musicHelper.generate_navigation_sound("write-error-pendriveDisconnected", "Conecte un pendraiv y toque Enter. Si desea salir toque Atrás.")
 
         # Evaluate Module
         musicHelper.generate_navigation_sound("evaluate-menu", "Modo Evaluación")
