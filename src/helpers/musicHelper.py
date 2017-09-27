@@ -15,7 +15,8 @@ def play_navigation_sound(sound_name):
     _play_sound("navigation", sound_name)
 
 def play_word(word):
-    _play_sound("words", word)
+    level_config = configHelper.get_config()['wordSource']
+    _play_sound("words/{}".format(level_config), word)
 
 def play_word_spell_out(word):
     for letter in word:
@@ -56,10 +57,17 @@ def play_end_of_module_action(state, level_number, prev_state):
     play_navigation_sound("end-" + state + "-level" + str(level_number))
     play_back_to_action(prev_state)
 
-def generate_word_sounds(words):
-    os.system("rm audios/words/*.wav")
+def generate_default_word_sounds(words):
+    _generate_word_sounds(words, "default")
+
+def generate_custom_word_sounds(words):
+    _generate_word_sounds(words, "custom")
+
+def _generate_word_sounds(words, level_config):
+    audio_path = "words/{}".format(level_config)
+    os.system("rm audios/{}/*.wav".format(audio_path))
     for word in words:
-        _generate_sound("words", word, word)
+        _generate_sound(audio_path, word, word)
 
 def generate_navigation_sound(sound_name, speech):
     _generate_sound("navigation", sound_name, speech)

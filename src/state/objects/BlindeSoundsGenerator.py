@@ -26,13 +26,14 @@ class BlindeSoundsGenerator(Navigation):
 
     def _generate_default_words_sounds(self):
         level_words = []
+        #FIXME: Arreglar para que traiga unicamente las palabras por default
         level_words.extend(configHelper.get_level_config("learn", 1)['words'])
         level_words.extend(configHelper.get_level_config("learn", 2)['words'])
         level_words.extend(configHelper.get_level_config("learn", 3)['words'])
         level_words.extend(configHelper.get_level_config("evaluation", 1)['words'])
         level_words.extend(configHelper.get_level_config("evaluation", 2)['words'])
         level_words.extend(configHelper.get_level_config("evaluation", 3)['words'])
-        musicHelper.generate_word_sounds(level_words)
+        musicHelper.generate_default_word_sounds(level_words)
 
     def _generate_navigation_sounds(self):
         os.system("rm audios/navigation/*.wav")

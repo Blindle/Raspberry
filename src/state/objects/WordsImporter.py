@@ -1,18 +1,21 @@
 import os
 import json
 import helpers.musicHelper as musicHelper
+import helpers.usbHelper as usbHelper
 
 from Navigation import Navigation
 from state.stateEnum import StateEnum
 
 class WordsImporter(Navigation):
     _PREVIOUS_STATE = StateEnum.CONFIG
-    LEARN = "aprendizaje"
-    EVALUATE = "evaluacion"
+    _LEARN = "aprendizaje"
+    _EVALUATE = "evaluacion"
+    _FILE_NAME = "palabras_a_cargar"
     _imported_words = []
 
     def __init__(self):
         super(WordsImporter, self).__init__()
+        print "Toque Enter para importar"
         musicHelper.play_navigation_sound("words-importer-message")
 
     def _set_attributes(self):
@@ -21,19 +24,20 @@ class WordsImporter(Navigation):
 
     def _select_option(self):
         self._import_words()
+        print "Palabras importadas con exito"
         musicHelper.play_navigation_sound("words-importer-ok")
         self._back_to_previous_state()
 
     def _import_words(self):
-        f = open("palabras_a_cargar.txt", "r")
+        f = usbHelper.open_txt_file_from_pendrive(self._FILE_NAME)
         result_dict = dict()
         line = f.readline()
         
         while line:
             line = line.replace('\n', '').replace('\r', '').replace(':', '')
-            if line == self.LEARN:
+            if line == self._LEARN:
                 result_dict = self._decode_module_words(f, "learn-levels", result_dict)
-            elif line == self.EVALUATE:
+            elif line == self._EVALUATE:
                 result_dict = self._decode_module_words(f, "evaluation-levels", result_dict)
             else:
                 raise Exception('Error en formato de archivo de entrada')
@@ -41,7 +45,7 @@ class WordsImporter(Navigation):
         f.close()
 
         self._write_custom_levels_file(result_dict)
-        #musicHelper.generate_word_sounds(self._imported_words) FIXME: Ver si hacerlo
+        musicHelper.generate_custom_word_sounds(self._imported_words)
 
     def _decode_module_words(self, file, module_key, result_dict):
         line = file.readline()

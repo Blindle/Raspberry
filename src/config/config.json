@@ -1,5 +1,5 @@
 {
     "input": "console", 
     "output": "console", 
-    "wordSource": "default"
+    "wordSource": "custom"
 }

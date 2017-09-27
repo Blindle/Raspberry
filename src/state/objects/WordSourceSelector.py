@@ -47,7 +47,6 @@ class WordSourceSelector(Navigation):
         self._play_source_word_sound("selection")
         self._play_source_word_sound(self._get_current_option())
         configHelper.update_system_config("wordSource", self._get_current_option())
-        self._generate_word_sounds()
         self._back_to_previous_state()
 
     def _get_current_option(self):
@@ -55,13 +54,3 @@ class WordSourceSelector(Navigation):
 
     def _play_source_word_sound(self, name):
         musicHelper.play_navigation_sound("word-source-" + name)
-
-    def _generate_word_sounds(self):
-        level_words = []
-        level_words.extend(configHelper.get_level_config("learn", 1)['words'])
-        level_words.extend(configHelper.get_level_config("learn", 2)['words'])
-        level_words.extend(configHelper.get_level_config("learn", 3)['words'])
-        level_words.extend(configHelper.get_level_config("evaluation", 1)['words'])
-        level_words.extend(configHelper.get_level_config("evaluation", 2)['words'])
-        level_words.extend(configHelper.get_level_config("evaluation", 3)['words'])
-        musicHelper.generate_word_sounds(level_words)
