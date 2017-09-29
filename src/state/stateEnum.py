@@ -10,7 +10,7 @@ class StateEnum(Enum):
 	CONFIG           = ('config', 'Configuracion')
 	REGULATION       = ('regulation', 'Regulacion de motores')
 	WORDS_IMPORTER   = ('words-importer', 'Cargar nuevas palabras')
-	SOUNDS_GENERATOR = ('sounds-generator', 'Generar sonidos de Blindle')
+	SOUNDS_GENERATOR = ('sounds-generator', 'Generar sonidos')
 	WORD_SOURCE      = ('word-source', 'Fuente de palabras')
 	LEVEL_1          = (1, 'Nivel 1')
 	LEVEL_2          = (2, 'Nivel 2')

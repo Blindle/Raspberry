@@ -12,7 +12,7 @@ from BrailleMatrixHandler import BrailleMatrixHandler
 class Evaluate(BrailleMatrixHandler):
     _index_current_word = 0
     _PREVIOUS_STATE = StateEnum.EVALUATE_MENU
-    _ERROR_BOUND = 3
+    _ERRORS_ALLOWED_PER_WORD = 3
 
     def __init__(self, level_number):
         self.number = level_number
@@ -67,7 +67,7 @@ class Evaluate(BrailleMatrixHandler):
         print("Palabra ingresada: " + written_word + " - Palabra correcta: " + self._get_current_word())
         if(not result):
             self._increment_error_counter()
-        return result or self._get_current_error_counter() == self._ERROR_BOUND
+        return result or self._get_current_error_counter() == self._ERRORS_ALLOWED_PER_WORD
 
     def _is_last_word(self):
         return self._index_current_word == (len(self.words) - 1)
@@ -92,8 +92,8 @@ class Evaluate(BrailleMatrixHandler):
 
     def _play_evaluation_result(self):
         sound_name = 'evaluate-correctMessage'
-        if self._get_current_error_counter() == self._ERROR_BOUND:
-            sound_name = 'evaluate-maxCantErrorsMessage'
+        if self._get_current_error_counter() == self._ERRORS_ALLOWED_PER_WORD:
+            sound_name = 'evaluate-maxNumberErrorsMessage'
         musicHelper.play_navigation_sound(sound_name)
 
     def _print_evaluation_result(self):
@@ -105,10 +105,10 @@ class Evaluate(BrailleMatrixHandler):
             index += 1
 
     def _play_result(self, word, errors):
-        sound_name = "word"
+        sound_type = "wordExplanation"
         if len(word) == 1:
-            sound_name = "letter"
-        musicHelper.play_navigation_sound(sound_name)
+            sound_type = "letterExplanation"
+        musicHelper.play_navigation_sound(sound_type)
         musicHelper.play_word(word)
         musicHelper.play_navigation_sound("mistakes")
         musicHelper.play_letter(errors)

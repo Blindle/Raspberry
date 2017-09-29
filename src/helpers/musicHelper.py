@@ -20,7 +20,7 @@ def play_word(word):
 
 def play_word_spell_out(word):
     for letter in word:
-        play_navigation_sound("letter")
+        play_navigation_sound("letterExplanation")
         play_letter(letter)
         _play_points(configHelper.get_points(letter))
 
@@ -63,8 +63,8 @@ def generate_default_word_sounds(words):
 def generate_custom_word_sounds(words):
     _generate_word_sounds(words, "custom")
 
-def _generate_word_sounds(words, level_config):
-    audio_path = "words/{}".format(level_config)
+def _generate_word_sounds(words, word_source):
+    audio_path = "words/{}".format(word_source)
     os.system("rm audios/{}/*.wav".format(audio_path))
     for word in words:
         _generate_sound(audio_path, word, word)

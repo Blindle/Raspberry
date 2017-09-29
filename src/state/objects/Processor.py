@@ -1,7 +1,7 @@
 import helpers.musicHelper as musicHelper
 from state import state
 
-class Navigation(object): 
+class Processor(object): 
     def __init__(self):
         self._set_attributes()
 

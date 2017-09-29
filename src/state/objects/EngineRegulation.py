@@ -1,10 +1,10 @@
 from helpers import processorHelper
-from Navigation import Navigation
+from Processor import Processor
 from state.stateEnum import StateEnum
 
 import helpers.musicHelper as musicHelper
 
-class EngineRegulation(Navigation):
+class EngineRegulation(Processor):
     _PREVIOUS_STATE = StateEnum.CONFIG
     _MOTORS_SIZE = 8
     _LEFT = "L"

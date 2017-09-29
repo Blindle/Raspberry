@@ -1,7 +1,6 @@
 import helpers.loadingHelper as loadingHelper
 import helpers.processorHelper as processorHelper
 import helpers.musicHelper as musicHelper
-import helpers.configHelper as configHelper
 
 from state import state
 

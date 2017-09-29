@@ -1,5 +1,5 @@
 {
-    "input": "console", 
-    "output": "console", 
-    "wordSource": "custom"
+    "input": "buttons", 
+    "output": "arduino", 
+    "wordSource": "default"
 }

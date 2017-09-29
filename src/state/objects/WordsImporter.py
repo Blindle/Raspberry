@@ -3,10 +3,10 @@ import json
 import helpers.musicHelper as musicHelper
 import helpers.usbHelper as usbHelper
 
-from Navigation import Navigation
+from Processor import Processor
 from state.stateEnum import StateEnum
 
-class WordsImporter(Navigation):
+class WordsImporter(Processor):
     _PREVIOUS_STATE = StateEnum.CONFIG
     _LEARN = "aprendizaje"
     _EVALUATE = "evaluacion"

@@ -1,10 +1,10 @@
 import helpers.musicHelper as musicHelper
 import helpers.configHelper as configHelper
 
-from Navigation import Navigation
+from Processor import Processor
 from state.stateEnum import StateEnum
 
-class WordSourceSelector(Navigation):
+class WordSourceSelector(Processor):
     _PREVIOUS_STATE = StateEnum.CONFIG
     _DEFAULT_SOURCE = "default"
     _CUSTOM_SOURCE = "custom"

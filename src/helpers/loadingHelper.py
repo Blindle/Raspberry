@@ -15,7 +15,7 @@ from state.objects.Evaluate import Evaluate
 from state.objects.ConfigurationMenu import ConfigurationMenu
 from state.objects.EngineRegulation import EngineRegulation
 from state.objects.WordsImporter import WordsImporter
-from state.objects.BlindeSoundsGenerator import BlindeSoundsGenerator
+from state.objects.SoundsGenerator import SoundsGenerator
 from state.objects.WordSourceSelector import WordSourceSelector
 
 def get_state_object():
@@ -39,7 +39,7 @@ def get_state_object():
     elif current_state == StateEnum.WORDS_IMPORTER.key:
         state_object = WordsImporter()
     elif current_state == StateEnum.SOUNDS_GENERATOR.key:
-        state_object = BlindeSoundsGenerator()
+        state_object = SoundsGenerator()
     elif current_state == StateEnum.WORD_SOURCE.key:
         state_object = WordSourceSelector()
     else:

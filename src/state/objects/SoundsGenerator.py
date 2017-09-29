@@ -3,18 +3,18 @@ import os
 import helpers.musicHelper as musicHelper
 import helpers.configHelper as configHelper
 
-from Navigation import Navigation
+from Processor import Processor
 from state.stateEnum import StateEnum
 
-class BlindeSoundsGenerator(Navigation):
+class SoundsGenerator(Processor):
     _PREVIOUS_STATE = StateEnum.CONFIG
 
     def __init__(self):
-        super(BlindeSoundsGenerator, self).__init__()
+        super(SoundsGenerator, self).__init__()
         musicHelper.play_navigation_sound("sounds-generator-message")
     
     def _set_attributes(self):
-        super(BlindeSoundsGenerator, self)._set_attributes()
+        super(SoundsGenerator, self)._set_attributes()
         self._previous_state = self._PREVIOUS_STATE
 
     def _select_option(self):
@@ -71,10 +71,10 @@ class BlindeSoundsGenerator(Navigation):
         musicHelper.generate_navigation_sound("evaluate-nextWord", "Se pasa a la siguiente palabra")
         musicHelper.generate_navigation_sound("evaluate-correctMessage", "Palabra escrita correctamente.")
         musicHelper.generate_navigation_sound("evaluate-errorMessage", "Palabra escrita incorrectamente.")
-        musicHelper.generate_navigation_sound("evaluate-maxCantErrorsMessage", "Cometiste tres errores.")
+        musicHelper.generate_navigation_sound("evaluate-maxNumberErrorsMessage", "Cometiste tres errores.")
         musicHelper.generate_navigation_sound("evaluate-result", "Resultado de la evaluación")
-        musicHelper.generate_navigation_sound("letter", "Letra")
-        musicHelper.generate_navigation_sound("word", "Palabra")
+        musicHelper.generate_navigation_sound("letterExplanation", "Letra")
+        musicHelper.generate_navigation_sound("wordExplanation", "Palabra")
         musicHelper.generate_navigation_sound("mistakes", "Errores")
 
         # Configuration
@@ -112,8 +112,8 @@ class BlindeSoundsGenerator(Navigation):
         musicHelper.generate_navigation_sound("words-importer-error", "Hubo un error en la carga de palabras")
         
         # Sounds Generator
-        musicHelper.generate_navigation_sound("sounds-generator", "Generar sonidos de Bláindel")
-        musicHelper.generate_navigation_sound("enter-sounds-generator", "Entrando a la generación de sonidos de Bláindel")
+        musicHelper.generate_navigation_sound("sounds-generator", "Generar sonidos")
+        musicHelper.generate_navigation_sound("enter-sounds-generator", "Entrando a la generación de sonidos")
         musicHelper.generate_navigation_sound("sounds-generator-message", "Pulse el botón enter para generar los sonidos por defecto")
         musicHelper.generate_navigation_sound("sounds-generator-ok", "Generación de sonidos exitosa")
 
