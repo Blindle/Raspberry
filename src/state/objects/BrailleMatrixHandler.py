@@ -5,9 +5,9 @@ sys.path.append(os.path.dirname(__file__) + "/../../")
 
 from helpers import configHelper
 from helpers import processorHelper
-from Navigation import Navigation
+from Processor import Processor
 
-class BrailleMatrixHandler(Navigation):
+class BrailleMatrixHandler(Processor):
     _current_letter = 0
     _POINTS_SIZE = 6
     _LETTERS_SIZE = 1
@@ -74,5 +74,4 @@ class BrailleMatrixHandler(Navigation):
         return symbols
 
     def _get_and_format_symbol(self, braille_points):
-        symbol = configHelper.get_symbol(braille_points)
-        return symbol.replace('\n', '').replace('\r', '')
+        return configHelper.get_symbol(braille_points)

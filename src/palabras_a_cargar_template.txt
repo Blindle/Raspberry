@@ -1,0 +1,8 @@
+aprendizaje:
+1: h, j, k, q
+2: do, re, mi
+3: azul, rojo, gris
+evaluacion:
+1: m, w, e, r
+2: fa, la, si
+3: sol, rosa, agua

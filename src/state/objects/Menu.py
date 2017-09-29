@@ -5,9 +5,9 @@ sys.path.append(os.path.dirname(__file__) + "../")
 
 from state import state
 from state.stateEnum import StateEnum
-from Navigation import Navigation
+from Processor import Processor
 
-class Menu(Navigation):
+class Menu(Processor):
     current_option = 0
 
     def __init__(self):

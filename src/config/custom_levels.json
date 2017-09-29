@@ -1,0 +1,56 @@
+{
+    "evaluation-levels": [
+        {
+            "id": "1", 
+            "words": [
+                "m", 
+                "w", 
+                "e", 
+                "r"
+            ]
+        }, 
+        {
+            "id": "2", 
+            "words": [
+                "fa", 
+                "la", 
+                "si"
+            ]
+        }, 
+        {
+            "id": "3", 
+            "words": [
+                "sol", 
+                "rosa", 
+                "agua"
+            ]
+        }
+    ], 
+    "learn-levels": [
+        {
+            "id": "1", 
+            "words": [
+                "b", 
+                "o", 
+                "c", 
+                "a"
+            ]
+        }, 
+        {
+            "id": "2", 
+            "words": [
+                "do", 
+                "re", 
+                "mi"
+            ]
+        }, 
+        {
+            "id": "3", 
+            "words": [
+                "azul", 
+                "rojo", 
+                "gris"
+            ]
+        }
+    ]
+}

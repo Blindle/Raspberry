@@ -12,6 +12,11 @@ from state.objects.EvaluateMenu import EvaluateMenu
 from state.objects.Write import Write
 from state.objects.Learn import Learn
 from state.objects.Evaluate import Evaluate
+from state.objects.ConfigurationMenu import ConfigurationMenu
+from state.objects.EngineRegulation import EngineRegulation
+from state.objects.WordsImporter import WordsImporter
+from state.objects.SoundsGenerator import SoundsGenerator
+from state.objects.WordSourceSelector import WordSourceSelector
 
 def get_state_object():
     current_state = state.get_state()
@@ -28,7 +33,15 @@ def get_state_object():
     elif current_state == StateEnum.EVALUATE.key:
         state_object = Evaluate(state.get_level())
     elif current_state == StateEnum.CONFIG.key:
-        state_object = 'Config()'
+        state_object = ConfigurationMenu()
+    elif current_state == StateEnum.REGULATION.key:
+        state_object = EngineRegulation()
+    elif current_state == StateEnum.WORDS_IMPORTER.key:
+        state_object = WordsImporter()
+    elif current_state == StateEnum.SOUNDS_GENERATOR.key:
+        state_object = SoundsGenerator()
+    elif current_state == StateEnum.WORD_SOURCE.key:
+        state_object = WordSourceSelector()
     else:
         raise Exception('The state isnt valid')
 
