@@ -5,6 +5,9 @@ import helpers.usbHelper as usbHelper
 
 from Processor import Processor
 from state.stateEnum import StateEnum
+from custom_exceptions.FileNotFoundException import FileNotFoundException
+from custom_exceptions.PendriveDisconnectedException import PendriveDisconnectedException
+from custom_exceptions.FormatException import FormatException
 
 class WordsImporter(Processor):
     _PREVIOUS_STATE = StateEnum.CONFIG
@@ -23,16 +26,20 @@ class WordsImporter(Processor):
         self._previous_state = self._PREVIOUS_STATE
 
     def _select_option(self):
-        self._import_words()
-        print "Palabras importadas con exito"
-        musicHelper.play_navigation_sound("words-importer-ok")
+        try:
+            self._import_words()
+        except PendriveDisconnectedException:
+            print "Toque Enter para continuar, Back para salir"
+            return
+        except (FileNotFoundException, FormatException):
+            pass
         self._back_to_previous_state()
 
     def _import_words(self):
         f = usbHelper.open_txt_file_from_pendrive(self._FILE_NAME)
+
         result_dict = dict()
         line = f.readline()
-        
         while line:
             line = line.replace('\n', '').replace('\r', '').replace(':', '')
             if line == self._LEARN:
@@ -40,7 +47,7 @@ class WordsImporter(Processor):
             elif line == self._EVALUATE:
                 result_dict = self._decode_module_words(f, "evaluation-levels", result_dict)
             else:
-                raise Exception('Error en formato de archivo de entrada')
+                raise FormatException()
             line = f.readline()
         f.close()
 
@@ -62,25 +69,21 @@ class WordsImporter(Processor):
         my_dict = dict()
 
         level_line = level_line.split(':')
-
-        if len(level_line) != 2: #Separador : mal usado
-            raise Exception('Error en formato de archivo de entrada')
+        if len(level_line) != 2: #Caracter (:) mal usado
+            raise FormatException()
 
         level_number = level_line[0]
         words_unprocessed = level_line[1].split(',')
-        
-        if len(words_unprocessed) == 0: #No se utilizo el separador , entre palabras, o esta vacio
-            raise Exception('Error en formato de archivo de entrada')
+        if len(words_unprocessed) == 0: #No se utilizo el caracter (,) entre palabras, o esta vacio
+            raise FormatException()
         
         words_processed = []
-
         for word in words_unprocessed:
             words_processed.append(word.replace(' ', '').replace('\n', '').replace('\r', ''))
 
         my_dict["id"] = level_number
         my_dict["words"] = words_processed
         self._imported_words.extend(words_processed)
-        
         return my_dict
 
     def _write_custom_levels_file(self, result_dict):
