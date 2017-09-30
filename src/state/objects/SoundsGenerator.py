@@ -112,6 +112,7 @@ class SoundsGenerator(Processor):
         musicHelper.generate_navigation_sound("words-importer-message", "Pulse el botón enter para comenzar con la carga de palabras")
         musicHelper.generate_navigation_sound("words-importer-ok", "Carga de palabras exitosa")
         musicHelper.generate_navigation_sound("words-importer-error", "Hubo un error en la carga de palabras")
+        musicHelper.generate_navigation_sound("words-importer-retry", "Conecte el pendraiv y toque Enter para continuar, o toque Atrás para salir.")
         
         # Sounds Generator
         musicHelper.generate_navigation_sound("sounds-generator", "Generar sonidos")
@@ -124,7 +125,12 @@ class SoundsGenerator(Processor):
         musicHelper.generate_navigation_sound("level2", "Nivel 2")
         musicHelper.generate_navigation_sound("level3", "Nivel 3")
 
-        #Others
+        # Exceptions
+        musicHelper.generate_exception_sound("file-not-found", "No se encontró el archivo necesario en el pendraiv conectado")
+        musicHelper.generate_exception_sound("format", "Formato del archivo incorrecto")
+        musicHelper.generate_exception_sound("pendrive-dissconected", "Pendraiv desconectado")
+
+        # Others
         musicHelper.generate_navigation_sound("welcomeMessage", "Bienvenido a Bláindel")
         musicHelper.generate_navigation_sound("backto-menu", "Regresando al menú principal")
 

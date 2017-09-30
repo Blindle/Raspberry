@@ -30,6 +30,7 @@ class WordsImporter(Processor):
             self._import_words()
         except PendriveDisconnectedException:
             print "Toque Enter para continuar, Back para salir"
+            musicHelper.play_navigation_sound("words-importer-retry")
             return
         except (FileNotFoundException, FormatException):
             pass

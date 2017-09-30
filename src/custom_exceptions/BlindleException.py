@@ -9,6 +9,4 @@ class BlindleException(Exception):
         self._play_exception_sound()
 
     def _play_exception_sound(self):
-        print "play " + self._exception_name + " exception"
-        #FIXME: Hacer metodo
-        #musicHelper.play_exception_sound(self._exception_name)
+        musicHelper.play_exception_sound(self._exception_name)
