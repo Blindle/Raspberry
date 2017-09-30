@@ -44,3 +44,6 @@ def update_system_config(key, value):
     config_file = open(os.path.dirname(__file__) + '/../config/config.json', 'w')
     config_file.write(json.dumps(system_config, indent=4, sort_keys=True))
     config_file.close()
+
+def exists_custom_level_config():
+    return os.path.isfile('config/custom_levels.json')
