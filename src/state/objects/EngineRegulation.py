@@ -55,7 +55,7 @@ class EngineRegulation(Processor):
             direction = self._RIGHT
         else:
             direction = self._LEFT
-        motor_number = self._current_motor + 1
+        motor_number = self._current_motor
         message_to_send = "-{}{}".format(direction, str(motor_number))
 
         print("Enviando " + message_to_send)
