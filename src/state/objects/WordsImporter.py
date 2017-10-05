@@ -19,7 +19,7 @@ class WordsImporter(Processor):
     def __init__(self):
         super(WordsImporter, self).__init__()
         print "Toque Enter para importar"
-        musicHelper.play_navigation_sound("words-importer-message")
+        self._play_words_importer_sound("message")
 
     def _set_attributes(self):
         super(WordsImporter, self)._set_attributes()
@@ -28,9 +28,11 @@ class WordsImporter(Processor):
     def _select_option(self):
         try:
             self._import_words()
+            print "Carga de palabras exitosa"
+            self._play_words_importer_sound("ok")
         except PendriveDisconnectedException:
             print "Toque Enter para continuar, Back para salir"
-            musicHelper.play_navigation_sound("words-importer-retry")
+            self._play_words_importer_sound("retry")
             return
         except (FileNotFoundException, FormatException):
             pass
@@ -94,3 +96,6 @@ class WordsImporter(Processor):
         file_to_write = open("config/custom_levels.json", 'w')
         file_to_write.write(json.dumps(parsed, indent=4, sort_keys=True))
         file_to_write.close()
+
+    def _play_words_importer_sound(self, name):
+        musicHelper.play_navigation_sound("words-importer-" + name)
