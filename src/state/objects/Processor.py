@@ -31,12 +31,18 @@ class Processor(object):
         print("Regresando a " + self._previous_state.real_name)
         musicHelper.play_back_to_action(self._previous_state.key)
         state.set_state(self._previous_state.key)
+        self._initialize_output()
     
     def _verify_overflow(self):
         pass
 
     def _set_attributes(self):
         self._previous_state = ""
+        self.output = None
 
     def _print_current_option(self):
         pass
+
+    def _initialize_output(self):
+        if not self.output is None:
+            self.output.initialize()
