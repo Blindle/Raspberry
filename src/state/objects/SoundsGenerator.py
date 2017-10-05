@@ -85,6 +85,7 @@ class SoundsGenerator(Processor):
         # Engine Regulation
         musicHelper.generate_navigation_sound("regulation", "Regular motores")
         musicHelper.generate_navigation_sound("enter-regulation", "Entrando a la regulación de los motores")
+        musicHelper.generate_navigation_sound("regulation-message", "Toque el botón uno para mover el motor hacia la izquierda, y el botón 6 para mover hacia la derecha")
         musicHelper.generate_navigation_sound("motor1", "Motor 1")
         musicHelper.generate_navigation_sound("motor2", "Motor 2")
         musicHelper.generate_navigation_sound("motor3", "Motor 3")
@@ -93,8 +94,6 @@ class SoundsGenerator(Processor):
         musicHelper.generate_navigation_sound("motor6", "Motor 6")
         musicHelper.generate_navigation_sound("motor7", "Motor 7")
         musicHelper.generate_navigation_sound("motor8", "Motor 8")
-        musicHelper.generate_navigation_sound("move-L", "Moviendo hacia la izquierda")
-        musicHelper.generate_navigation_sound("move-R", "Moviendo hacia la derecha")
 
         # Word Source
         musicHelper.generate_navigation_sound("word-source", "Fuente de palabras")
