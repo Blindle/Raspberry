@@ -11,7 +11,7 @@ class ArduinoOutput(OutputProcessor):
         self.output = serial.Serial('/dev/ttyACM0', PORT)
 
     def write(self, word):
-    	self.output.write(word)
+    	self.output.write(word.encode("utf-8"))
 
     def initialize(self):
         self.output.write(self._INIT_MSG)

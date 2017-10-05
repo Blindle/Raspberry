@@ -29,9 +29,9 @@ class Processor(object):
     
     def _back_to_previous_state(self):
         print("Regresando a " + self._previous_state.real_name)
+        self._initialize_output()
         musicHelper.play_back_to_action(self._previous_state.key)
         state.set_state(self._previous_state.key)
-        self._initialize_output()
     
     def _verify_overflow(self):
         pass
