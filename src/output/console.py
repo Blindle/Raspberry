@@ -5,7 +5,7 @@ class ConsoleOutput(OutputProcessor):
         pass
 
     def write(self, word):
-        print(self._createPrintingString(word))
+        print(self._createPrintingString(word).encode("utf-8"))
 
     def __del__(self):
         pass

@@ -7,8 +7,8 @@ import helpers.musicHelper as musicHelper
 class EngineRegulation(Processor):
     _PREVIOUS_STATE = StateEnum.CONFIG
     _MOTORS_SIZE = 8
-    _LEFT = "L"
-    _RIGHT = "R"
+    _LEFT = "I"
+    _RIGHT = "D"
     _LEFT_BUTTON_VALUE = 1
     _RIGHT_BUTTON_VALUE = 2
     _current_motor = 0
@@ -55,9 +55,9 @@ class EngineRegulation(Processor):
             direction = self._RIGHT
         else:
             direction = self._LEFT
-        motor_number = self._current_motor + 1
+        motor_number = self._current_motor
         message_to_send = "-{}{}".format(direction, str(motor_number))
 
         print("Enviando " + message_to_send)
-        musicHelper.play_navigation_sound("move-" + direction)
         self.output.write(message_to_send)
+        musicHelper.play_navigation_sound("move-" + direction)

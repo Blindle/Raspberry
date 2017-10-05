@@ -14,6 +14,9 @@ def play_letter(letter):
 def play_navigation_sound(sound_name):
     _play_sound("navigation", sound_name)
 
+def play_exception_sound(sound_name):
+    _play_sound("blindle_exceptions", sound_name)
+
 def play_word(word):
     level_config = configHelper.get_config()['wordSource']
     _play_sound("words/{}".format(level_config), word)
@@ -76,6 +79,9 @@ def generate_letter_sounds(letters):
     os.system("rm audios/letters/*.wav")
     for letter in letters:
         _generate_sound("letters", letter, letter)
+
+def generate_exception_sound(sound_name, speech):
+    _generate_sound("blindle_exceptions", sound_name, speech)
 
 def _generate_sound(folder, sound_name, speech):
     os.system("pico2wave -w=audios/{}/{}.wav -l='es-ES' '{}'".format(folder, sound_name, speech))
