@@ -75,10 +75,8 @@ def _generate_word_sounds(words, word_source):
 def generate_navigation_sound(sound_name, speech):
     _generate_sound("navigation", sound_name, speech)
 
-def generate_letter_sounds(letters):
-    os.system("rm audios/letters/*.wav")
-    for letter in letters:
-        _generate_sound("letters", letter, letter)
+def generate_letter_sound(letter, speech):
+    _generate_sound("letters", letter, speech)
 
 def generate_exception_sound(sound_name, speech):
     _generate_sound("blindle_exceptions", sound_name, speech)
