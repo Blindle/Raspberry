@@ -54,7 +54,8 @@ class Learn(Processor):
     def _play_word(self):
         musicHelper.play_navigation_sound("wordExplanation")
         musicHelper.play_word(self.words[self.current_word])
-        musicHelper.play_word_spell_out(self.words[self.current_word].upper())
+        if configHelper.get_config()['wordSpelling'] == "enabled":
+            musicHelper.play_word_spell_out(self.words[self.current_word].upper())
     
     def _print_word(self):
         word = self.words[self.current_word]

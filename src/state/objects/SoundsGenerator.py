@@ -133,6 +133,15 @@ class SoundsGenerator(Processor):
         musicHelper.generate_navigation_sound("welcomeMessage", "Bienvenido a Bláindel")
         musicHelper.generate_navigation_sound("backto-menu", "Regresando al menú principal")
 
+        # Word Spelling
+        musicHelper.generate_navigation_sound("word-spelling", "Deletreo de palabras")
+        musicHelper.generate_navigation_sound("enter-word-spelling", "Entrando a configuración de deletreo de palabras")
+        musicHelper.generate_navigation_sound("word-spelling-message", "Seleccione la opción deseada, toque enter para confirmar. La configuración actual es")
+        musicHelper.generate_navigation_sound("word-spelling-enabled", "Habilitada")
+        musicHelper.generate_navigation_sound("word-spelling-disabled", "Deshabilitada")
+        musicHelper.generate_navigation_sound("word-spelling-options", "Las opciones son")
+        musicHelper.generate_navigation_sound("word-spelling-selection", "Ha seleccionado la opción")
+
     def _generate_letters_sounds(self):
         letters = []
         letters.extend('a')
