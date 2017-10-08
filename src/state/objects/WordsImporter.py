@@ -5,9 +5,9 @@ import helpers.usbHelper as usbHelper
 
 from Processor import Processor
 from state.stateEnum import StateEnum
-from custom_exceptions.FileNotFoundException import FileNotFoundException
-from custom_exceptions.PendriveDisconnectedException import PendriveDisconnectedException
-from custom_exceptions.FormatException import FormatException
+from blindle_exceptions.FileNotFoundException import FileNotFoundException
+from blindle_exceptions.PendriveDisconnectedException import PendriveDisconnectedException
+from blindle_exceptions.FormatException import FormatException
 
 class WordsImporter(Processor):
     _PREVIOUS_STATE = StateEnum.CONFIG

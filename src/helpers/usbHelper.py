@@ -3,8 +3,8 @@ import os
 
 sys.path.append(os.path.dirname(__file__) + "../")
 
-from custom_exceptions.FileNotFoundException import FileNotFoundException
-from custom_exceptions.PendriveDisconnectedException import PendriveDisconnectedException
+from blindle_exceptions.FileNotFoundException import FileNotFoundException
+from blindle_exceptions.PendriveDisconnectedException import PendriveDisconnectedException
 
 PENDRIVE_PATH = "/media/pi"
 
