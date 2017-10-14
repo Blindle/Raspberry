@@ -11,7 +11,7 @@ class EngineRegulation(Processor):
     _MOTORS_SIZE = 8
     _LEFT = "I"
     _RIGHT = "D"
-    _CHAR_TO_SEND = "-" #FIXME: Cambiar por '¬'
+    _CHAR_TO_SEND = "d"
     _LEFT_BUTTON_VALUE = 1
     _RIGHT_BUTTON_VALUE = 6
     _current_motor = 0
