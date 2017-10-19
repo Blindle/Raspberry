@@ -7,8 +7,8 @@ import helpers.musicHelper as musicHelper
 class EngineRegulation(Processor):
     _PREVIOUS_STATE = StateEnum.CONFIG
     _MOTORS_SIZE = 8
-    _LEFT = "I"
-    _RIGHT = "D"
+    _LEFT = "L"
+    _RIGHT = "R"
     _LEFT_BUTTON_VALUE = 1
     _RIGHT_BUTTON_VALUE = 2
     _current_motor = 0
