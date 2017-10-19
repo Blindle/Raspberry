@@ -67,7 +67,7 @@ class SoundsGenerator(Processor):
         musicHelper.generate_navigation_sound("end-evaluate-level2", "Nivel 2 de evaluación finalizado")
         musicHelper.generate_navigation_sound("end-evaluate-level3", "Nivel 3 de evaluación finalizado")
         musicHelper.generate_navigation_sound("backto-evaluate-menu", "Regresando al menú de evaluación")
-        musicHelper.generate_navigation_sound("evaluate-representMessage", "La palabra que se debe representar es")
+        musicHelper.generate_navigation_sound("evaluate-representMessage", "Se debe representar")
         musicHelper.generate_navigation_sound("evaluate-nextWord", "Se pasa a la siguiente palabra")
         musicHelper.generate_navigation_sound("evaluate-correctMessage", "Palabra escrita correctamente.")
         musicHelper.generate_navigation_sound("evaluate-errorMessage", "Palabra escrita incorrectamente.")

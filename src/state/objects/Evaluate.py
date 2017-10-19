@@ -101,10 +101,6 @@ class Evaluate(BrailleMatrixHandler):
             index += 1
 
     def _play_result(self, word, errors):
-        sound_type = "wordExplanation"
-        if len(word) == 1:
-            sound_type = "letterExplanation"
-        musicHelper.play_navigation_sound(sound_type)
         musicHelper.play_word(word)
         musicHelper.play_navigation_sound("mistakes")
         musicHelper.play_letter(errors)

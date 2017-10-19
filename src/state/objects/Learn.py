@@ -1,13 +1,13 @@
-import sys
 import os
-sys.path.append(os.path.dirname(__file__) + "/../../")
+import sys
 
+from helpers import configHelper, musicHelper, processorHelper
+from Processor import Processor
 from state import state
 from state.stateEnum import StateEnum
-from helpers import configHelper
-from helpers import processorHelper
-from helpers import musicHelper
-from Processor import Processor
+
+sys.path.append(os.path.dirname(__file__) + "/../../")
+
 
 class Learn(Processor):
     current_word = 0
@@ -46,15 +46,18 @@ class Learn(Processor):
         return self.current_word == -1 or self.current_word == len(self.words)
 
     def _play_word(self):
-        musicHelper.play_navigation_sound("wordExplanation")
-        musicHelper.play_word(self.words[self.current_word])
+        word = self._get_current_word()
+        musicHelper.play_word(word)
         if configHelper.get_config()['wordSpelling'] == "enabled":
-            musicHelper.play_word_spell_out(self.words[self.current_word].upper())
+            musicHelper.play_word_spell_out(word.upper())
     
     def _print_word(self):
-        word = self.words[self.current_word]
+        word = self._get_current_word()
         print(word)
         self.output.write(word.upper())
 
     def _print_welcome_message(self):
         print("Nivel " + str(self.number) + " de aprendizaje")
+
+    def _get_current_word(self):
+        return self.words[self.current_word]

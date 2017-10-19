@@ -18,8 +18,17 @@ def play_exception_sound(sound_name):
     _play_sound("blindle_exceptions", sound_name)
 
 def play_word(word):
-    level_config = configHelper.get_config()['wordSource']
-    _play_sound("words/{}".format(level_config), word)
+    sound_type = ""
+    sound_folder = ""
+    if _is_letter(word):
+        sound_type = "letterExplanation"
+        sound_folder = "letters"
+    else:
+        sound_type = "wordExplanation"
+        level_config = configHelper.get_config()['wordSource']
+        sound_folder = "words/{}".format(level_config)
+    play_navigation_sound(sound_type)
+    _play_sound(sound_folder, word)
 
 def play_word_spell_out(word):
     for letter in word:
@@ -70,7 +79,8 @@ def _generate_word_sounds(words, word_source):
     audio_path = "words/{}".format(word_source)
     os.system("rm audios/{}/*.wav".format(audio_path))
     for word in words:
-        _generate_sound(audio_path, word, word)
+        if not _is_letter(word):
+            _generate_sound(audio_path, word, word)
 
 def generate_navigation_sound(sound_name, speech):
     _generate_sound("navigation", sound_name, speech)
@@ -83,3 +93,6 @@ def generate_exception_sound(sound_name, speech):
 
 def _generate_sound(folder, sound_name, speech):
     os.system("pico2wave -w=audios/{}/{}.wav -l='es-ES' '{}'".format(folder, sound_name, speech))
+
+def _is_letter(word):
+    return len(word) == 1
