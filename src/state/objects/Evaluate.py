@@ -35,7 +35,7 @@ class Evaluate(BrailleMatrixHandler):
         if evaluation_result:
             self._play_evaluation_result()
             if not self._is_last_word():
-                print("Palabra escrita correctamente. Se pasa a la siguiente palabra")
+                print("Se pasa a la siguiente palabra")
                 self._go_to_next_word()
             else:
                 self._print_evaluation_result()
@@ -47,6 +47,7 @@ class Evaluate(BrailleMatrixHandler):
     def _go_to_next_word(self):
         self._index_current_word += 1
         self._reset_matrix()
+        self._initialize_output()
         print(self._get_current_word())
         self._play_word_to_represent()
 
