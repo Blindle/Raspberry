@@ -69,6 +69,10 @@ def play_end_of_module_action(state, level_number, prev_state):
     play_navigation_sound("end-" + state + "-level" + str(level_number))
     play_back_to_action(prev_state)
 
+def play_letter_number(letter_number):
+    play_navigation_sound("letterExplanation")
+    play_letter(str(letter_number))
+
 def generate_default_word_sounds(words):
     _generate_word_sounds(words, "default")
 
