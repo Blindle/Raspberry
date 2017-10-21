@@ -56,7 +56,11 @@ class BrailleMatrixHandler(Processor):
             self._resize_matrix()
 
     def _resize_matrix(self):
-        self._current_letters_size += 1
+        letters = configHelper.get_number_of_letters()
+        if self._current_letters_size % letters == 0:
+            self._current_letters_size += letters
+        else:
+            self._current_letters_size += 1
         self.braille_matrix.resize((self._current_letters_size, self._POINTS_SIZE))
 
     def _fill_braille_matrix(self, input_value):
