@@ -1,6 +1,7 @@
 {
     "input": "console", 
     "output": "console", 
-    "wordSource": "default",
+    "wordSource": "default", 
+    "wordSpelling": "disabled",
     "numberOfLetters": 4
 }

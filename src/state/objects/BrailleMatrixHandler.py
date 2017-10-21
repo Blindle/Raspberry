@@ -5,6 +5,7 @@ sys.path.append(os.path.dirname(__file__) + "/../../")
 
 from helpers import configHelper
 from helpers import processorHelper
+from helpers import musicHelper
 from Processor import Processor
 
 class BrailleMatrixHandler(Processor):
@@ -17,6 +18,7 @@ class BrailleMatrixHandler(Processor):
         self.output = processorHelper.get_output_processor()
         self._initialize_matrix()
         self._print_welcome_message()
+        musicHelper.play_letter_number(self._current_letter + 1)
 
     def _set_attributes(self):
         super(BrailleMatrixHandler, self)._set_attributes()
@@ -34,11 +36,14 @@ class BrailleMatrixHandler(Processor):
     def _move_right(self):
         self._current_letter += 1
         self._verify_overflow()
+        musicHelper.play_letter_number(self._current_letter + 1)
         if self._should_write_on_movement(self._current_letter, self._current_letter - 1):
             self._write()
 
     def _move_left(self):
         self._current_letter -= 1
+        if self._current_letter >= 0:
+            musicHelper.play_letter_number(self._current_letter + 1)
         self._verify_overflow()
         if self._should_write_on_movement(self._current_letter, self._current_letter + 1):
             self._write()

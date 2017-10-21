@@ -10,7 +10,8 @@ states = [StateEnum.MENU.key,
           StateEnum.REGULATION.key,
           StateEnum.WORDS_IMPORTER.key,
           StateEnum.SOUNDS_GENERATOR.key,
-          StateEnum.WORD_SOURCE.key
+          StateEnum.WORD_SOURCE.key,
+          StateEnum.WORD_SPELLING.key
          ]
 
 state_variables = {'state': StateEnum.MENU.key, 'level': StateEnum.LEVEL_1.key}

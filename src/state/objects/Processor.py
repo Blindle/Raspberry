@@ -29,6 +29,7 @@ class Processor(object):
     
     def _back_to_previous_state(self):
         print("Regresando a " + self._previous_state.real_name)
+        self._initialize_output()
         musicHelper.play_back_to_action(self._previous_state.key)
         state.set_state(self._previous_state.key)
     
@@ -36,7 +37,18 @@ class Processor(object):
         pass
 
     def _set_attributes(self):
-        self._previous_state = ""
+        self._previous_state = None
+        self.output = None
 
     def _print_current_option(self):
         pass
+
+    def _initialize_output(self):
+        if not self.output is None:
+            self.output.initialize()
+
+    def _finished_level(self, current_state, level_number):
+        print("Se termino el nivel {} de {}. Volviendo al {} ...".format(str(level_number), current_state.real_name, self._previous_state.real_name))
+        self._initialize_output()
+        musicHelper.play_end_of_module_action(current_state.key, level_number, self._previous_state.key)
+        state.set_state(self._previous_state.key)

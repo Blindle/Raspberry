@@ -18,7 +18,6 @@ class WordSourceSelector(Processor):
         self._play_source_word_sound(self._current_config)
         self._play_source_word_sound("options")
         self._print_current_option()
-        self._play_source_word_sound(self._get_current_option())
     
     def _set_attributes(self):
         super(WordSourceSelector, self)._set_attributes()

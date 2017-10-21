@@ -17,6 +17,7 @@ from state.objects.EngineRegulation import EngineRegulation
 from state.objects.WordsImporter import WordsImporter
 from state.objects.SoundsGenerator import SoundsGenerator
 from state.objects.WordSourceSelector import WordSourceSelector
+from state.objects.WordSpellingSelector import WordSpellingSelector
 
 def get_state_object():
     current_state = state.get_state()
@@ -42,6 +43,8 @@ def get_state_object():
         state_object = SoundsGenerator()
     elif current_state == StateEnum.WORD_SOURCE.key:
         state_object = WordSourceSelector()
+    elif current_state == StateEnum.WORD_SPELLING.key:
+        state_object = WordSpellingSelector()
     else:
         raise Exception('The state isnt valid')
 
