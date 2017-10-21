@@ -1,8 +1,9 @@
 import json
 import os
 
-#with open(os.path.dirname(__file__) + '/../config/config.json') as data_file:
-#    CONFIG = json.load(data_file)
+with open(os.path.dirname(__file__) + '/../config/config.json') as data_file:
+    CONFIG = json.load(data_file)
+    NUMBER_OF_LETTERS = CONFIG['numberOfLetters']
 
 #with open(os.path.dirname(__file__) + '/../config/levels.json') as data_file:
 #    print "Cargando niveles por default ..."
@@ -47,3 +48,6 @@ def update_system_config(key, value):
 
 def exists_custom_level_config():
     return os.path.isfile('config/custom_levels.json')
+
+def get_number_of_letters():
+    return NUMBER_OF_LETTERS

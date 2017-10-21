@@ -2,5 +2,6 @@
     "input": "buttons", 
     "output": "arduino", 
     "wordSource": "default", 
-    "wordSpelling": "disabled"
+    "wordSpelling": "disabled",
+    "numberOfLetters": 4
 }
