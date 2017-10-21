@@ -34,10 +34,14 @@ class BrailleMatrixHandler(Processor):
     def _move_right(self):
         self._current_letter += 1
         self._verify_overflow()
+        if self._should_write_on_movement(self._current_letter, self._current_letter - 1):
+            self._write()
 
     def _move_left(self):
         self._current_letter -= 1
         self._verify_overflow()
+        if self._should_write_on_movement(self._current_letter, self._current_letter + 1):
+            self._write()
 
     def _verify_overflow(self):
         if self._current_letter < 0:
@@ -62,7 +66,14 @@ class BrailleMatrixHandler(Processor):
 
     def _write(self):
         symbols = self._transform_points_into_symbols(self._current_letters_size)
-        self.output.write(symbols)
+        output = self._get_output(symbols)
+        self.output.write(output)
+
+    def _get_output(self, symbols):
+        number_of_letters = configHelper.get_number_of_letters()
+        start = self._current_letter - (self._current_letter % number_of_letters)
+        finish = start + number_of_letters
+        return symbols[start:finish]
 
     def _transform_points_into_symbols(self, rows_size):
         symbols = ""
@@ -75,3 +86,12 @@ class BrailleMatrixHandler(Processor):
 
     def _get_and_format_symbol(self, braille_points):
         return configHelper.get_symbol(braille_points)
+
+    def _should_write_on_movement(self, current_letter, previous_letter):
+        letters = configHelper.get_number_of_letters()
+        if previous_letter < current_letter and previous_letter % letters == letters - 1:
+            return True
+        if (previous_letter > 1 and previous_letter % letters == 0 and
+                previous_letter > current_letter):
+            return True
+        return False
