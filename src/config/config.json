@@ -1,6 +1,6 @@
 {
-    "input": "buttons", 
-    "output": "arduino", 
+    "input": "console", 
+    "output": "console", 
     "wordSource": "default",
     "numberOfLetters": 4
 }
