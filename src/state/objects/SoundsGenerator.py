@@ -52,10 +52,10 @@ class SoundsGenerator(Processor):
 
         # Write Module
         musicHelper.generate_navigation_sound("write", "Escritura libre")
-        musicHelper.generate_navigation_sound("enter-write", "Comienza la escritura libre, toque el botón atras para salir")
-        musicHelper.generate_navigation_sound("write-confirmMsg", "Si desea guardar toque Enter, sino toque Atrás")
-        musicHelper.generate_navigation_sound("write-saveOk", "Archivo guardado correctamente")
-        musicHelper.generate_navigation_sound("write-error-pendriveDisconnected", "Conecte un pendraiv y toque Enter. Si desea salir toque Atrás.")
+        musicHelper.generate_navigation_sound("enter-write", "Comienza la escritura libre, toque el botón atrás para salir")
+        musicHelper.generate_navigation_sound("write-confirmMsg", "Si desea guardar toque Aceptar, sino toque atrás")
+        musicHelper.generate_navigation_sound("write-saveOk", "Archivo guardado!")
+        musicHelper.generate_navigation_sound("write-error-pendriveDisconnected", "Conecte un pendraiv y toque Aceptar. Si desea salir toque Atrás")
 
         # Evaluate Module
         musicHelper.generate_navigation_sound("evaluate-menu", "Modo Evaluación")
@@ -69,23 +69,23 @@ class SoundsGenerator(Processor):
         musicHelper.generate_navigation_sound("backto-evaluate-menu", "Regresando al menú de evaluación")
         musicHelper.generate_navigation_sound("evaluate-representMessage", "Se debe representar")
         musicHelper.generate_navigation_sound("evaluate-nextWord", "Se pasa a la siguiente palabra")
-        musicHelper.generate_navigation_sound("evaluate-correctMessage", "Palabra escrita correctamente.")
-        musicHelper.generate_navigation_sound("evaluate-errorMessage", "Palabra escrita incorrectamente.")
-        musicHelper.generate_navigation_sound("evaluate-maxNumberErrorsMessage", "Cometiste tres errores.")
-        musicHelper.generate_navigation_sound("evaluate-result", "Resultado de la evaluación")
+        musicHelper.generate_navigation_sound("evaluate-correctMessage", "Palabra escrita con éxito")
+        musicHelper.generate_navigation_sound("evaluate-errorMessage", "Palabra mal escrita")
+        musicHelper.generate_navigation_sound("evaluate-maxNumberErrorsMessage", "Cometiste tres errores")
+        musicHelper.generate_navigation_sound("evaluate-result", "Resultado de la Evaluación")
         musicHelper.generate_navigation_sound("letterExplanation", "Letra")
         musicHelper.generate_navigation_sound("wordExplanation", "Palabra")
         musicHelper.generate_navigation_sound("mistakes", "Errores")
 
         # Configuration
         musicHelper.generate_navigation_sound("config", "Configuración")
-        musicHelper.generate_navigation_sound("enter-config", "Entrando a la configuración")
-        musicHelper.generate_navigation_sound("backto-config", "Regresando a Configuración")
+        musicHelper.generate_navigation_sound("enter-config", "Entrando al menú de Configuración")
+        musicHelper.generate_navigation_sound("backto-config", "Regresando al menú de Configuración")
 
         # Engine Regulation
         musicHelper.generate_navigation_sound("regulation", "Regular motores")
         musicHelper.generate_navigation_sound("enter-regulation", "Entrando a la regulación de los motores")
-        musicHelper.generate_navigation_sound("regulation-message", "Toque el botón uno para mover el motor hacia la izquierda, y el botón 6 para mover hacia la derecha")
+        musicHelper.generate_navigation_sound("regulation-message", "El boton 1 mueve el motor hacia la izquierda y el 6 a la derecha")
         musicHelper.generate_navigation_sound("motor1", "Motor 1")
         musicHelper.generate_navigation_sound("motor2", "Motor 2")
         musicHelper.generate_navigation_sound("motor3", "Motor 3")
@@ -98,7 +98,7 @@ class SoundsGenerator(Processor):
         # Word Source
         musicHelper.generate_navigation_sound("word-source", "Fuente de palabras")
         musicHelper.generate_navigation_sound("enter-word-source", "Entrando a fuente de palabras")
-        musicHelper.generate_navigation_sound("word-source-message", "Seleccione la fuente de palabras, toque enter para confirmar. La fuente actual es")
+        musicHelper.generate_navigation_sound("word-source-message", "Seleccione la fuente de palabras, toque aceptar para confirmar. La fuente actual es")
         musicHelper.generate_navigation_sound("word-source-default", "Por defecto")
         musicHelper.generate_navigation_sound("word-source-custom", "Personalizada")
         musicHelper.generate_navigation_sound("word-source-options", "Las opciones son")
@@ -108,15 +108,15 @@ class SoundsGenerator(Processor):
         # Words Importer
         musicHelper.generate_navigation_sound("words-importer", "Cargar nuevas palabras")
         musicHelper.generate_navigation_sound("enter-words-importer", "Entrando a la carga de nuevas palabras")
-        musicHelper.generate_navigation_sound("words-importer-message", "Pulse el botón enter para comenzar con la carga de palabras")
+        musicHelper.generate_navigation_sound("words-importer-message", "Pulse el botón Aceptar para comenzar con la carga de palabras")
         musicHelper.generate_navigation_sound("words-importer-ok", "Carga de palabras exitosa")
         musicHelper.generate_navigation_sound("words-importer-error", "Hubo un error en la carga de palabras")
-        musicHelper.generate_navigation_sound("words-importer-retry", "Conecte el pendraiv y toque Enter para continuar, o toque Atrás para salir.")
+        musicHelper.generate_navigation_sound("words-importer-retry", "Conecte el pendraiv y toque Aceptar para continuar, o toque Atrás para salir.")
         
         # Sounds Generator
         musicHelper.generate_navigation_sound("sounds-generator", "Generar sonidos")
         musicHelper.generate_navigation_sound("enter-sounds-generator", "Entrando a la generación de sonidos")
-        musicHelper.generate_navigation_sound("sounds-generator-message", "Pulse el botón enter para generar los sonidos por defecto")
+        musicHelper.generate_navigation_sound("sounds-generator-message", "Pulse el botón aceptar para generar los sonidos por defecto")
         musicHelper.generate_navigation_sound("sounds-generator-ok", "Generación de sonidos exitosa")
 
         # Levels
@@ -136,7 +136,7 @@ class SoundsGenerator(Processor):
         # Word Spelling
         musicHelper.generate_navigation_sound("word-spelling", "Deletreo de palabras")
         musicHelper.generate_navigation_sound("enter-word-spelling", "Entrando a configuración de deletreo de palabras")
-        musicHelper.generate_navigation_sound("word-spelling-message", "Seleccione la opción deseada, toque enter para confirmar. La configuración actual es")
+        musicHelper.generate_navigation_sound("word-spelling-message", "Seleccione la opción deseada, toque aceptar para confirmar. La configuración actual es")
         musicHelper.generate_navigation_sound("word-spelling-enabled", "Habilitada")
         musicHelper.generate_navigation_sound("word-spelling-disabled", "Deshabilitada")
         musicHelper.generate_navigation_sound("word-spelling-options", "Las opciones son")

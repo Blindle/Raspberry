@@ -10,7 +10,7 @@
         },
         {
             "id": 3,
-            "words": ["las","mar","mio","pie","tia","rio"]
+            "words": ["las","mar","mesa","pie","casa","auto"]
         }
     ],
     "evaluation-levels": [
@@ -24,7 +24,7 @@
         },
         {
             "id": 3,
-            "words": ["las","mar","mio","pie","tia","rio"]
+            "words": ["las","mar","mesa","pie","casa","auto"]
         }
     ]
 }
