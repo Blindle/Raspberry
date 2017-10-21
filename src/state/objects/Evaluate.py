@@ -58,6 +58,7 @@ class Evaluate(BrailleMatrixHandler):
 
     def _evaluate(self):
         written_word = self._transform_points_into_symbols(self._current_letters_size).lower()
+        written_word = written_word.rstrip()
         result = written_word == self._get_current_word()
         
         print("Palabra ingresada: " + written_word + " - Palabra correcta: " + self._get_current_word())
