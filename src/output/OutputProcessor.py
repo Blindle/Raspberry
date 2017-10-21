@@ -5,5 +5,8 @@ class OutputProcessor(object):
     def write(self, word):
     	pass
 
+    def initialize(self):
+        pass
+
     def __del__(self):
     	pass

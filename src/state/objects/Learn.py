@@ -1,13 +1,13 @@
-import sys
 import os
-sys.path.append(os.path.dirname(__file__) + "/../../")
+import sys
 
+from helpers import configHelper, musicHelper, processorHelper
+from Processor import Processor
 from state import state
 from state.stateEnum import StateEnum
-from helpers import configHelper
-from helpers import processorHelper
-from helpers import musicHelper
-from Processor import Processor
+
+sys.path.append(os.path.dirname(__file__) + "/../../")
+
 
 class Learn(Processor):
     current_word = 0
@@ -32,7 +32,7 @@ class Learn(Processor):
             self._print_word()
             self._play_word()
         else:
-            self._back_to_menu()
+            self._finished_level(StateEnum.LEARN, self.number)
     
     def _move_left(self):
         self.current_word -= 1
@@ -42,24 +42,22 @@ class Learn(Processor):
         else:
             self.current_word = 0
 
-    # FIXME: Ver si este metodo se puede pasar a la clase Processor, ya que la clase Evaluate tiene el mismo
-    def _back_to_menu(self):
-        print("Se termino el nivel " + str(self.number) + " de aprendizaje. Volviendo al menu de aprendizaje ...")
-        musicHelper.play_end_of_module_action(StateEnum.LEARN.key, self.number, self._previous_state.key)
-        state.set_state(self._previous_state.key)
-
     def _verify_overflow(self):
         return self.current_word == -1 or self.current_word == len(self.words)
 
     def _play_word(self):
-        musicHelper.play_navigation_sound("wordExplanation")
-        musicHelper.play_word(self.words[self.current_word])
-        musicHelper.play_word_spell_out(self.words[self.current_word].upper())
+        word = self._get_current_word()
+        musicHelper.play_word(word)
+        if configHelper.get_config()['wordSpelling'] == "enabled":
+            musicHelper.play_word_spell_out(word.upper())
     
     def _print_word(self):
-        word = self.words[self.current_word]
+        word = self._get_current_word()
         print(word)
         self.output.write(word.upper())
 
     def _print_welcome_message(self):
         print("Nivel " + str(self.number) + " de aprendizaje")
+
+    def _get_current_word(self):
+        return self.words[self.current_word]

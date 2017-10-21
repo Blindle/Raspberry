@@ -7,8 +7,6 @@ from state import state
 input_processor = processorHelper.get_input_processor()
 output_processor = processorHelper.get_output_processor()
 
-output_processor.write('HOLA')
-
 print("Starting!")
 my_input = "start"
 

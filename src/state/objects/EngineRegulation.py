@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from helpers import processorHelper
 from Processor import Processor
 from state.stateEnum import StateEnum
@@ -9,13 +11,15 @@ class EngineRegulation(Processor):
     _MOTORS_SIZE = 8
     _LEFT = "L"
     _RIGHT = "R"
+    _CHAR_TO_SEND = "d"
     _LEFT_BUTTON_VALUE = 1
-    _RIGHT_BUTTON_VALUE = 2
+    _RIGHT_BUTTON_VALUE = 6
     _current_motor = 0
     
     def __init__(self):
         super(EngineRegulation, self).__init__()
         self.output = processorHelper.get_output_processor()
+        musicHelper.play_navigation_sound("regulation-message")
         self._print_current_motor()
 
     def _set_attributes(self):
@@ -56,8 +60,7 @@ class EngineRegulation(Processor):
         else:
             direction = self._LEFT
         motor_number = self._current_motor
-        message_to_send = "-{}{}".format(direction, str(motor_number))
+        message_to_send = "{}{}{}".format(self._CHAR_TO_SEND, direction, str(motor_number))
 
         print("Enviando " + message_to_send)
         self.output.write(message_to_send)
-        musicHelper.play_navigation_sound("move-" + direction)

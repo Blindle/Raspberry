@@ -8,7 +8,7 @@ from Menu import Menu
 from state import state
 
 class ConfigurationMenu(Menu):
-    _STATE_OPTIONS = [StateEnum.REGULATION, StateEnum.WORDS_IMPORTER, StateEnum.WORD_SOURCE, StateEnum.SOUNDS_GENERATOR]
+    _STATE_OPTIONS = [StateEnum.REGULATION, StateEnum.WORDS_IMPORTER, StateEnum.WORD_SOURCE, StateEnum.SOUNDS_GENERATOR, StateEnum.WORD_SPELLING]
     _PREVIOUS_STATE = StateEnum.MENU
 
     def __init__(self):

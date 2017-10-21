@@ -35,10 +35,11 @@ class Evaluate(BrailleMatrixHandler):
         if evaluation_result:
             self._play_evaluation_result()
             if not self._is_last_word():
-                print("Palabra escrita correctamente. Se pasa a la siguiente palabra")
+                print("Se pasa a la siguiente palabra")
                 self._go_to_next_word()
             else:
-                self._back_to_menu()
+                self._print_evaluation_result()
+                self._finished_level(StateEnum.EVALUATE, self.number)
         else:
             print("Palabra escrita de forma erronea.")
             musicHelper.play_navigation_sound('evaluate-errorMessage')
@@ -46,14 +47,9 @@ class Evaluate(BrailleMatrixHandler):
     def _go_to_next_word(self):
         self._index_current_word += 1
         self._reset_matrix()
+        self._initialize_output()
         print(self._get_current_word())
         self._play_word_to_represent()
-
-    def _back_to_menu(self):
-        print("Se termino el nivel " + str(self.number) + " de evaluacion. Volviendo al menu de evaluacion ...")
-        self._print_evaluation_result()
-        musicHelper.play_end_of_module_action(StateEnum.EVALUATE.key, self.number, self._previous_state.key)
-        state.set_state(self._previous_state.key)
 
     def _reset_matrix(self):
         self._initialize_matrix()
@@ -105,10 +101,6 @@ class Evaluate(BrailleMatrixHandler):
             index += 1
 
     def _play_result(self, word, errors):
-        sound_type = "wordExplanation"
-        if len(word) == 1:
-            sound_type = "letterExplanation"
-        musicHelper.play_navigation_sound(sound_type)
         musicHelper.play_word(word)
         musicHelper.play_navigation_sound("mistakes")
         musicHelper.play_letter(errors)

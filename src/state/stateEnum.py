@@ -12,6 +12,7 @@ class StateEnum(Enum):
 	WORDS_IMPORTER   = ('words-importer', 'Cargar nuevas palabras')
 	SOUNDS_GENERATOR = ('sounds-generator', 'Generar sonidos')
 	WORD_SOURCE      = ('word-source', 'Fuente de palabras')
+	WORD_SPELLING    = ('word-spelling', 'Deletreo de palabras')
 	LEVEL_1          = (1, 'Nivel 1')
 	LEVEL_2          = (2, 'Nivel 2')
 	LEVEL_3          = (3, 'Nivel 3')
