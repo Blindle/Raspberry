@@ -72,15 +72,15 @@ class SoundsGenerator(Processor):
         musicHelper.generate_navigation_sound("evaluate-correctMessage", "Palabra escrita con éxito")
         musicHelper.generate_navigation_sound("evaluate-errorMessage", "Palabra mal escrita")
         musicHelper.generate_navigation_sound("evaluate-maxNumberErrorsMessage", "Cometiste tres errores")
-        musicHelper.generate_navigation_sound("evaluate-result", "Resultado al menù de Evaluación")
+        musicHelper.generate_navigation_sound("evaluate-result", "Resultado de la Evaluación")
         musicHelper.generate_navigation_sound("letterExplanation", "Letra")
         musicHelper.generate_navigation_sound("wordExplanation", "Palabra")
         musicHelper.generate_navigation_sound("mistakes", "Errores")
 
         # Configuration
         musicHelper.generate_navigation_sound("config", "Configuración")
-        musicHelper.generate_navigation_sound("enter-config", "Entrando a la configuración")
-        musicHelper.generate_navigation_sound("backto-config", "Regresando a Configuración")
+        musicHelper.generate_navigation_sound("enter-config", "Entrando al menú de Configuración")
+        musicHelper.generate_navigation_sound("backto-config", "Regresando al menú de Configuración")
 
         # Engine Regulation
         musicHelper.generate_navigation_sound("regulation", "Regular motores")
