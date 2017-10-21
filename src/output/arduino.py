@@ -12,8 +12,7 @@ class ArduinoOutput(OutputProcessor):
 
     def write(self, word):
         sanitized_output = (self._sanitize_word(word)).encode("utf-8")
-        print(',' + sanitized_output + ',')
-    	self.output.write(sanitized_output)
+        self.output.write(sanitized_output)
 
     def initialize(self):
         self.output.write(self._INIT_MSG)
