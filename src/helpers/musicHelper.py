@@ -45,7 +45,11 @@ def _play_points(points):
             play_letter(str(index))
 
 def _play_sound(folder, sound):
-    pygame.mixer.music.load("audios/{}/{}.wav".format(folder, sound))
+    try:
+        pygame.mixer.music.load("audios/{}/{}.wav".format(folder, sound))
+    except Exception:
+        print 'Error abriendo archivo de audio'
+        return
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy() == True:
     	continue
